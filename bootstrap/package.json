@@ -1,0 +1,19 @@
+{
+  "name": "sito_progetto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DTV",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "colorbrewer": "^1.0.0",
+    "d3": "^3.5.17",
+    "d3-queue": "^3.0.7",
+    "nvd3": "^1.8.5",
+    "topojson": "^3.0.0"
+  }
+}
