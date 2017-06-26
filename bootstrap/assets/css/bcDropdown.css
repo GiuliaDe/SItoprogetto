@@ -1,0 +1,8 @@
+.barF {
+  fill: #ABCDEF
+}
+
+/* colore scorrimento su istogramma */
+.barF:hover {
+  fill: #6397D0
+}
