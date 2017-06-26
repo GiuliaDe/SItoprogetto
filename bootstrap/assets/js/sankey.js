@@ -29,7 +29,7 @@ var link = svgSan.append("g")
     .attr("class", "links_s")
     .attr("fill", "None")
     .attr("stroke", "#ABCDEF")
-    .attr("stroke-opacity", 0.2)
+    .attr("stroke-opacity", 0.8)
     .selectAll("g");
 
 
@@ -107,7 +107,7 @@ var link = svgSan.append("g")
     .attr("class", "links_s")
     .attr("fill", "None")
     .attr("stroke", "#ABCDEF")
-    .attr("stroke-opacity", 0.2)
+    .attr("stroke-opacity", 0.8)
     .selectAll("g")
     ;
 
