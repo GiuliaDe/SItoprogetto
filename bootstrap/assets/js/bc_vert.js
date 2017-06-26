@@ -1,23 +1,23 @@
 
+
 var data;
 // Get the data
-d3.json("assets/js/hier_skills.json", function(error, hbcdata) {
-  console.log("json:",hbcdata)
+d3.json("assets/data/hier_figure.json", function(error, json) {
+  console.log("hf",json)
  
-  hbcdata.forEach(function(d) {
+  json.forEach(function(d) {
 		d.value = +d.value;
   });
 
-	d3.select('#inds')
+	d3.select('#indsfig')
 			.on("change", function () {
 				var sect = this
-				console.log(sect);
 				var section = sect.options[sect.selectedIndex].value;
                 console.log(section)
 
-				data = filterJSON(hbcdata, 'skill', section);
+				data = filterJSON(json, 'figura', section);
 
-                console.log(data)
+                //console.log(data)
 	      //debugger
 	      
 		    data.forEach(function(d) {
@@ -28,22 +28,22 @@ d3.json("assets/js/hier_skills.json", function(error, hbcdata) {
     		
 		    
 		    //debugger
-				updatehbcSkill(data);
+				updatehbcFigura(data);
 
 
 				//jQuery('h1.page-header').html(section);
 			});
 
 	// generate initial graph
-	data = filterJSON(hbcdata, 'skill', 'Pacchetto Office');
-	updatehbcSkill(data);
+	data = filterJSON(json, 'figura', 'Analisti e progettisti di software');
+	updatehbcFigura(data);
 
 });
 
-function filterJSON(dati, key, value) {
-   console.log("filter: ",key, value, dati)
+function filterJSON(json, key, value) {
+  //  console.log("filter: ",key, value, json)
   var result = [];
-  dati.forEach(function(val,idx,arr){
+  json.forEach(function(val,idx,arr){
     //  console.log("foreach")
      // console.log("check",key, val[key], value)
     if(val[key] == value){
@@ -51,20 +51,20 @@ function filterJSON(dati, key, value) {
       result.push(val)
     }
   })
-  console.log("risultato: ",result);
+  //console.log("risultato: ",result);
   return result;
 
 }
 
 
-function updatehbcSkill(data){
+function updatehbcFigura(data){
 	//set domain for the x axis
-    console.log("update:", data)
-	yChart.domain(data.map(function(d){ 
-    	// console.log("ychart: ",d);
-        return d.figura; }) );
+    console.log("data figura :", data)
+	yChartF.domain(data.map(function(d){ 
+    //	 console.log("ychart: ",d);
+        return d.skill; }) );
 	//set domain for y axis
-	xChart.domain( [0, d3.max(data, function(d){
+	xChartF.domain( [0, d3.max(data, function(d){
 		//console.log("frea: ",+d.frequenza);
 		 return +d.frequenza; })] );
 
@@ -75,16 +75,15 @@ function updatehbcSkill(data){
 	
 	//select all bars on the graph, take them out, and exit the previous data set. 
 	//then you can add/enter the new data set
-	var bars = chart.selectAll(".bar")
+	var bars = chartF.selectAll(".barF")
 					.data(data)
 					.remove()
 					.exit()
 					.data(data)		
-
 	//now actually give each rectangle the corresponding data
 	bars.enter()
 		.append("rect")
-		.attr("class", "bar")
+		.attr("class", "barF")
 		//.attr("x", function(d, i){ return i * barHeight + 1 })
 		.attr("x",0)
 		.attr("y", function(d, i){ console.log("y: ", i*barHeight+1)
@@ -99,15 +98,15 @@ function updatehbcSkill(data){
 		.attr("fill", "#ABCDEF");
 	//left axis
 	
-	chart.select('.y')
-		  .call(yAxis)
+	chartF.select('.yAxisF')
+		  .call(yAxisF)
 		  .selectAll("text")
 		  
 		  
 	//bottom axis
-	chart.select('.xAxis')
+	chartF.select('.xAxisF')
 		//.attr("transform", "translate(0," + height + ")")
-		.call(xAxis)
+		.call(xAxisF)
 		.selectAll("text")
 			.style("text-anchor", "end")
 			.attr("dx", ".8em")
@@ -125,43 +124,43 @@ var margin = {top: 80, right: 20, bottom: 35, left: 80};
 var width = 700;
 var height = 500;
 
-var svgS = d3.select("#hierbcskill")
+var svgF = d3.select("#hierbcfigure")
 				.append("svg")
 				.attr("width", width + margin.left + margin.right)
 				.attr("height", height + margin.top + margin.bottom)
 				
-var chart = svgS.append("g")
+var chartF = svgF.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var xChart = d3.scale.linear()
+var xChartF = d3.scale.linear()
 				.range([0, width]);
 				
-var yChart = d3.scale.ordinal()
+var yChartF = d3.scale.ordinal()
 	.rangeRoundBands([height, 0], .1) 
 
 
-var xAxis = d3.svg.axis().orient("top").scale(xChart);
-var yAxis = d3.svg.axis().orient("left").scale(yChart);
+var xAxisF = d3.svg.axis().orient("top").scale(xChartF);
+var yAxisF = d3.svg.axis().orient("left").scale(yChartF);
+
 
 //set up axes
 //left axis
 
-	chart.append("g")
-		  .attr("class", "y axis")
-		  .call(yAxis)
+	chartF.append("g")
+		  .attr("class", "yAxisF")
+		  .call(yAxisF)
 		  
       	
     
 	//bottom axis
-	chart.append("g")
-		.attr("class", "xAxis")
+	chartF.append("g")
+		.attr("class", "xAxisF")
 		.attr("transform", "translate("-10+"," + height + ")")
-		.call(xAxis)
+		.call(xAxisF)
 		.selectAll("text")
 			.style("text-anchor", "end")
 			.attr("dx", ".8em")
 			.attr("dy", ".15em")
-			
 			/*
 			.attr("transform", function(d){
 				return "rotate(-65)";
@@ -169,12 +168,15 @@ var yAxis = d3.svg.axis().orient("left").scale(yChart);
 			*/
 
 //add labels
-chart
+chartF
 	.append("text")
 	.attr("transform", "translate(-70," +  (height+margin.bottom)/2 + ") rotate(-90)")
 	.text("Competenze");
 		
-chart
+chartF
 	.append("text")
 	.attr("transform", "translate(" + (width/4) + "," + ( -30) + ")")
 	.text("Frequenza");
+
+//use bothData to begin with
+//update(data);

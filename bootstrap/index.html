@@ -180,11 +180,24 @@
     <!--hr class="featurette-divider"-->
 
   <div class="row featurette">
-    <div class="col-md-5 col-md-push-7" id = "div7">
-      <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-    </div>
-    <div class="col-md-7 col-md-pull-5">
+    <div class="col-md-6" id = "div7">
+      <select id="indsfig">
+		    <option value="Analisti e progettisti di software" selected="selected">Analisti e progettisti di software</option>
+		    <option value="Tecnici programmatori">Tecnici programmatori</option>
+        <option value="Ingegneri meccanici">Ingegneri meccanici</option>
+        <option value="Analisti e progettisti di applicazioni web">Analisti e progettisti di applicazioni web</option>
+        <option value="Amministratori di sistemi">Amministratori di sistemi</option>
+        <option value="Disegnatori tecnici">Disegnatori tecnici</option>
+        <option value="Addetti agli affari generali">Addetti agli affari generali</option>
+        <option value="Specialisti nella commercializzazione di beni e servizi (escluso il settore ICT)">Specialisti nella commercializzazione di beni e servizi (escluso il settore ICT)</option>
+        <option value="Corrispondenti in lingue estere e professioni assimilate">Corrispondenti in lingue estere e professioni assimilate</option>
+        <option value="Ingegneri elettronici">Ingegneri elettronici</option>
+
+      </select>
+
+		<div id='hierbcfigure'></div>
+  </div>
+    <div class="col-md-6">
               <div id="list">
             <select id="inds">
 		<option value="Pacchetto Office" selected="selected">Pacchetto Office</option>
@@ -292,7 +305,9 @@ function scrollToTop() {
 	$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
 }
 </script>
-  <script src="assets/js/bc_vert_skill.js"></script>
+<script src="assets/js/bc_vert_skill.js"></script>
+  <script src="assets/js/bc_vert.js"></script> 
+  
   <script src="assets/js/treemap.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
  <script type="text/javascript" src="assets/js/sankey.js"></script>
