@@ -90,7 +90,7 @@
 			c.dx *= d.dx;
 			c.dy *= d.dy;
 			c.parent = d;
-		//	console.log("d: ",d,"c:",c);
+			console.log("d: ",d,"c:",c);
 			// recursion
 			layout(c);
 		  });
@@ -107,7 +107,7 @@
 			c.dx *= d.dx;
 			c.dy *= d.dy;
 			c.parent = d;
-			//console.log("d: ",d,"c:",c);
+			console.log("d: ",d,"c:",c);
 			// recursion
 			layout(c);
 		  });

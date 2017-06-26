@@ -28,7 +28,7 @@ d3.json("assets/js/hier_skills.json", function(error, hbcdata) {
     		
 		    
 		    //debugger
-				updatehbcSkill(data);
+				update(data);
 
 
 				//jQuery('h1.page-header').html(section);
@@ -36,7 +36,7 @@ d3.json("assets/js/hier_skills.json", function(error, hbcdata) {
 
 	// generate initial graph
 	data = filterJSON(hbcdata, 'skill', 'Pacchetto Office');
-	updatehbcSkill(data);
+	update(data);
 
 });
 
@@ -57,7 +57,7 @@ function filterJSON(dati, key, value) {
 }
 
 
-function updatehbcSkill(data){
+function update(data){
 	//set domain for the x axis
     console.log("update:", data)
 	yChart.domain(data.map(function(d){ 
@@ -125,12 +125,12 @@ var margin = {top: 80, right: 20, bottom: 35, left: 80};
 var width = 700;
 var height = 500;
 
-var svgS = d3.select("#hierbcskill")
+var svg = d3.select("#hierbcskill")
 				.append("svg")
 				.attr("width", width + margin.left + margin.right)
 				.attr("height", height + margin.top + margin.bottom)
 				
-var chart = svgS.append("g")
+var chart = svg.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var xChart = d3.scale.linear()
