@@ -2,13 +2,14 @@ var width = 700;
     height = 500;
 
 
-var svg = d3.select("#sankey"),
-    /*.append("svg")
+var svgSan = d3.select("#sankey_all")
+    .append("svg")
     .attr("width", width)
-    .attr("height", height);*/
-    width = +svg.attr("width"),
-    height = +svg.attr("height");
-var g = svg.append("g")
+    .attr("height", height);
+    //width = +svg.attr("width"),
+    //height = +svg.attr("height");
+var g = svgSan.append("g").
+        attr("class","gsan");
 
 var formatNumber = d3.format(",.0f"),
     format = function(d) { return formatNumber(d) + " TWh"; },
@@ -21,19 +22,19 @@ var sankey = d3.sankey()
 
 function updateData(){
 
-    d3.select(".links").remove();
-d3.select(".nodes").remove();
+    d3.select(".links_s").remove();
+d3.select(".nodes_s").remove();
 
-var link = svg.append("g")
-    .attr("class", "links")
+var link = svgSan.append("g")
+    .attr("class", "links_s")
     .attr("fill", "None")
     .attr("stroke", "#ABCDEF")
     .attr("stroke-opacity", 0.2)
     .selectAll("g");
 
 
-var node = svg.append("g")
-    .attr("class", "nodes")
+var node = svgSan.append("g")
+    .attr("class", "nodes_s")
     .attr("font-family", "sans-serif")
     .attr("font-size", 10)
     //.on("mouseover",handleMouseOver)
@@ -99,20 +100,21 @@ console.log(energy)
 
 function updateDataAll(){
 
-d3.select(".links").remove();
-d3.select(".nodes").remove();
+d3.select(".links_s").remove();
+d3.select(".nodes_s").remove();
 
-var link = svg.append("g")
-    .attr("class", "links")
+var link = svgSan.append("g")
+    .attr("class", "links_s")
     .attr("fill", "None")
     .attr("stroke", "#ABCDEF")
     .attr("stroke-opacity", 0.2)
-    .selectAll("g");
+    .selectAll("g")
+    ;
 
 
 
-var node = svg.append("g")
-    .attr("class", "nodes")
+var node = svgSan.append("g")
+    .attr("class", "nodes_s")
     .attr("font-family", "sans-serif")
     .attr("font-size", 10)
     //.on("mouseover",handleMouseOver)
@@ -172,6 +174,7 @@ console.log(energy)
 
   node.append("title")
       .text(function(d) { return d.name + "\n" + format(d.value); });
+      
 });
 }
 

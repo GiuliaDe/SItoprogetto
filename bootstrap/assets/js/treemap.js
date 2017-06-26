@@ -20,7 +20,7 @@
 		.range([0, height]);
 
 	// adding a color scale
-	var color = d3.scale.linear()
+	var colorTM = d3.scale.linear()
 		.domain(colorDomain)
 		.range(colorRange);
 
@@ -31,7 +31,7 @@
 		.ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
 		.round(false);
 
-	var svg = d3.select("#treemap").append("svg")
+	var svgTM = d3.select("#treemap").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.bottom + margin.top)
 		.style("margin-left", -margin.left + "px")
@@ -40,7 +40,7 @@
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 		.style("shape-rendering", "crispEdges");
 
-	var grandparent = svg.append("g")
+	var grandparent = svgTM.append("g")
 		.attr("class", "grandparent");
 
 	grandparent.append("rect")
@@ -123,7 +123,7 @@
 		return (parseInt(hexcolor.replace('#', ''), 16) > 0xffffff/3) ? 'black':'white';
 	}
 
-	d3.json("flare2.json", function(root) {
+	d3.json("assets/data/flare2.json", function(root) {
 	  console.log(root)
 	  initialize(root);
 	  accumulate(root);
@@ -141,9 +141,9 @@
 		grandparent
 		  .datum(d.parent)
 		  .select("rect")
-		  .attr("fill", function(){console.log(color(d.value/100000)); return color(d['value']/1000000)})
+		  .attr("fill", function(){console.log(colorTM(d.value/100000)); return colorTM(d['value']/1000000)})
 
-		var g1 = svg.insert("g", ".grandparent")
+		var g1 = svgTM.insert("g", ".grandparent")
 			.datum(d)
 			.attr("class", "depth");
 
@@ -199,11 +199,11 @@
 		  y.domain([d.y, d.y + d.dy]);
 
 		  // Enable anti-aliasing during the transition.
-		  svg.style("shape-rendering", null);
+		  svgTM.style("shape-rendering", null);
 
 		  // Draw child nodes on top of parent nodes.
 
-		  svg.selectAll(".depth").sort(function(a, b) {
+		  svgTM.selectAll(".depth").sort(function(a, b) {
 				console.log("sel all depth");
 				 return a.depth - b.depth; });
 
@@ -225,7 +225,7 @@
 
 		  // Remove the old node when the transition is finished.
 		  t1.remove().each("end", function() {
-			svg.style("shape-rendering", "crispEdges");
+			svgTM.style("shape-rendering", "crispEdges");
 			transitioning = false;
 		  });
 		}
@@ -243,7 +243,7 @@
 			.attr("y", function(d) { return y(d.y); })
 			.attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
 			.attr("height", function(d) { return y(d.y + d.dy) - y(d.y); })
-			.attr("fill", function(d){return color(parseFloat(d.value/200000));});}
+			.attr("fill", function(d){return colorTM(parseFloat(d.value/200000));});}
 
 
 	  function foreign(foreign){ /* added */
