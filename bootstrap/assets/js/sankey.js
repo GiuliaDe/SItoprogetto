@@ -1,13 +1,14 @@
 var width = 700;
-    height = 430;
+    height = 500;
 
 
-var svg = d3.select("#sankey")
-    .append("svg")
+var svg = d3.select("#sankey"),
+    /*.append("svg")
     .attr("width", width)
-    .attr("height", height);
-    //width = +svg.attr("width"),
-    //height = +svg.attr("height");
+    .attr("height", height);*/
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+var g = svg.append("g")
 
 var formatNumber = d3.format(",.0f"),
     format = function(d) { return formatNumber(d) + " TWh"; },
@@ -17,10 +18,6 @@ var sankey = d3.sankey()
     .nodeWidth(15)
     .nodePadding(10)
     .extent([[1, 1], [width - 1, height - 6]]);
-
-
-
-
 
 function updateData(){
 
@@ -35,8 +32,6 @@ var link = svg.append("g")
     .selectAll("g");
 
 
-
-
 var node = svg.append("g")
     .attr("class", "nodes")
     .attr("font-family", "sans-serif")
@@ -46,7 +41,7 @@ var node = svg.append("g")
 
 
     console.log("update data:")
-d3.json("energy.json", function(error, energy) {
+d3.json("assets/data/energy.json", function(error, energy) {
  // if (error) throw error;
 
 console.log(energy)
@@ -124,7 +119,7 @@ var node = svg.append("g")
     .selectAll("g");
 
     console.log("update dataAll")
-d3.json("energy3.json", function(error, energy) {
+d3.json("assets/data/energy3.json", function(error, energy) {
  // if (error) throw error;
 
 console.log(energy)
