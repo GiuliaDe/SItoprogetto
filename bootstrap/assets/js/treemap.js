@@ -3,8 +3,8 @@
 	var divWidth = obj.offsetWidth;
 
 	var margin = {top: 30, right: 0, bottom: 20, left: 0},
-		width = divWidth -25,
-		height = 540 - margin.top - margin.bottom,
+		widthTM = divWidth -25,
+		heightTM = 540 - margin.top - margin.bottom,
 		formatNumber = d3.format(",%"),
 		colorDomain = [-.1, 0, .1],
 		colorRange = ['#dda8db', '#ebf2f7', '#8FC983'],
@@ -12,12 +12,12 @@
 
 	// sets x and y scale to determine size of visible boxes
 	var x = d3.scale.linear()
-		.domain([0, width])
-		.range([0, width]);
+		.domain([0, widthTM])
+		.range([0, widthTM]);
 
 	var y = d3.scale.linear()
-		.domain([0, height])
-		.range([0, height]);
+		.domain([0, heightTM])
+		.range([0, heightTM]);
 
 	// adding a color scale
 	var colorTM = d3.scale.linear()
@@ -28,12 +28,12 @@
 	var treemap = d3.layout.treemap()
 		.children(function(d, depth) { return depth ? null : d._children; })
 		.sort(function(a, b) { return a.value - b.value; })
-		.ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
+		.ratio(heightTM / widthTM * 0.5 * (1 + Math.sqrt(5)))
 		.round(false);
 
 	var svgTM = d3.select("#treemap").append("svg")
-		.attr("width", width + margin.left + margin.right)
-		.attr("height", height + margin.bottom + margin.top)
+		.attr("width", widthTM + margin.left + margin.right)
+		.attr("height", heightTM + margin.bottom + margin.top)
 		.style("margin-left", -margin.left + "px")
 		.style("margin.right", -margin.right + "px")
 	  .append("g")
@@ -45,7 +45,7 @@
 
 	grandparent.append("rect")
 		.attr("y", -margin.top)
-		.attr("width", width)
+		.attr("width", widthTM)
 		.attr("height", margin.top);
 
 	grandparent.append("text")
@@ -57,8 +57,8 @@
 	// functions
 	function initialize(root) {
 		root.x = root.y = 0;
-		root.dx = width;
-		root.dy = height;
+		root.dx = widthTM;
+		root.dy = heightTM;
 		root.depth = 0;
 	  }
 

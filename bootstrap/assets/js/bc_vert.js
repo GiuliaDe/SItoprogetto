@@ -15,12 +15,12 @@ d3.json("assets/data/hier_figure.json", function(error, json) {
 				var section = sect.options[sect.selectedIndex].value;
                 console.log(section)
 
-				data = filterJSON(json, 'figura', section);
+				dataF = filterJSON(json, 'figura', section);
 
                 //console.log(data)
 	      //debugger
 	      
-		    data.forEach(function(d) {
+		    dataF.forEach(function(d) {
     			d.frequenza = +d.frequenza;
     			//d.year = parseDate(String(d.year));
     			d.active = true;
@@ -28,15 +28,15 @@ d3.json("assets/data/hier_figure.json", function(error, json) {
     		
 		    
 		    //debugger
-				updatehbcFigura(data);
+				updatehbcFigura(dataF);
 
 
 				//jQuery('h1.page-header').html(section);
 			});
 
 	// generate initial graph
-	data = filterJSON(json, 'figura', 'Analisti e progettisti di software');
-	updatehbcFigura(data);
+	dataF = filterJSON(json, 'figura', 'Analisti e progettisti di software');
+	updatehbcFigura(dataF);
 
 });
 
@@ -90,7 +90,7 @@ function updatehbcFigura(data){
 			return  i * barHeight + 1 })
 		.attr("width", function(d){
 			//console.log("width: ",d.frequenza, xChart(d.frequenza))
-			return xChart(d.frequenza); })
+			return xChartF(d.frequenza); })
 			//return d.frequenza;})
 		//.attr("width", function(d){console.log("valore", xChart(d.frequenza)) 
 		//	return height - xChart(d.frequenza); })
