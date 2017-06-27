@@ -116,14 +116,14 @@
 
             //Changed
 
-            d3.selectAll("circle").attr("cx", function(d) {
+            svgFG.selectAll("circle").attr("cx", function(d) {
                     return d.x;
                 })
                 .attr("cy", function(d) {
                     return d.y;
                 });
 
-            d3.selectAll("text").attr("x", function(d) {
+            svgFG.selectAll("text").attr("x", function(d) {
                     return d.x;
                 })
                 .attr("y", function(d) {
