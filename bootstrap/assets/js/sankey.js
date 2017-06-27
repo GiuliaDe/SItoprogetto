@@ -159,7 +159,7 @@ console.log(energy)
       .attr("y", function(d) { return d.y0; })
       .attr("height", function(d) { return d.y1 - d.y0; })
       .attr("width", function(d) { return d.x1 - d.x0; })
-      .attr("fill", function(d) { return color(d.name.replace(/ .*/, "")); })
+      .attr("fill", "#121621")
       .attr("stroke", "#000");
 
   node.append("text")
