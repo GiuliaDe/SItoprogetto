@@ -46,7 +46,7 @@ header
         display: table;
         width: 100%;
         height: auto;
-        padding: 100px;
+        /*padding: 100px;*/
         text-align: center;
         color: #fff;
         /*background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;*/
@@ -104,22 +104,15 @@ a.btn {
 .row.featurette {
   height: inherit;
   margin-bottom: 10px;
-  background-color: #e9e9e9;
+  background-color: #e9e9e9;  
 }
 
-.featurette-heading{
-  font-size: 22px;
-  color: white;
-}
 
-.lead{
+p {
   font-size: 20px;
   color: black;
 }
 
-.col-md-5, .col-md-6, .col-md-12, .col-md-7 {
-  height: 600px
-}
 
 .img-overlay {
     animation-name: fadeIn
@@ -153,9 +146,9 @@ height: 220px;
     width: 100%; */
 
 
-#div1{
+/*#div1{
   padding: 40px;
-}
+}*/
 
 
 .scroll-top-wrapper {
@@ -195,14 +188,49 @@ height: 220px;
   line-height: inherit;
 }
 
-/*
-#fotoDTV{
-  background-color: black;
+.featurette-heading{
+  font-size: 35px
+  
 }
 
-.img-overlay{
-  margin-top: 20px;
+#mappaIta {
+  height: 500px;
 }
-.row.foto{
-  background-color: black;
-} */
+/*
+#div1 {
+  background-color: #121621;
+  border: solid;
+  border-color: white;
+    display: block;
+
+}
+
+#div1 p {
+    color: white;
+    }*/
+
+/*section {
+    padding: 30px;
+    border: solid;
+    display: block;
+}
+
+
+
+#div2{
+  background-color: #C9C9C9;
+}
+
+*/
+
+#fotoDTV{
+    background-color: #e9e9e9;
+  background-size:cover;
+  /*border: solid;
+  display: block;*/
+}
+
+#fotoDTV .container {
+
+  margin-top: 30px;
+}
