@@ -22,16 +22,12 @@ d3.json("assets/js/hier_skills.json", function(error, hbcdata) {
 	      
 		    data.forEach(function(d) {
     			d.frequenza = +d.frequenza;
-    			//d.year = parseDate(String(d.year));
     			d.active = true;
     		});
     		
 		    
 		    //debugger
 				updatehbcSkill(data);
-
-
-				//jQuery('h1.page-header').html(section);
 			});
 
 	// generate initial graph
@@ -61,7 +57,7 @@ function updatehbcSkill(data){
 	//set domain for the x axis
     console.log("update:", data)
 	yChart.domain(data.map(function(d){ 
-    	// console.log("ychart: ",d);
+    	console.log("ychart: ",d.figura);
         return d.figura; }) );
 	//set domain for y axis
 	xChart.domain( [0, d3.max(data, function(d){
@@ -71,7 +67,7 @@ function updatehbcSkill(data){
 	//console.log("xch",xChart)
 	
 	//get the width of each bar 
-	var barHeight = height / data.length;
+	var barHeight = heightBC / data.length;
 	
 	//select all bars on the graph, take them out, and exit the previous data set. 
 	//then you can add/enter the new data set
@@ -89,17 +85,20 @@ function updatehbcSkill(data){
 		.attr("x",0)
 		.attr("y", function(d, i){ console.log("y: ", i*barHeight+1)
 			return  i * barHeight + 1 })
-		.attr("width", function(d){
-			//console.log("width: ",d.frequenza, xChart(d.frequenza))
-			return xChart(d.frequenza); })
 			//return d.frequenza;})
 		//.attr("width", function(d){console.log("valore", xChart(d.frequenza)) 
 		//	return height - xChart(d.frequenza); })
-		.attr("height", barHeight - 1)
-		.attr("fill", "#ABCDEF");
+		.attr("height", barHeight - 10)
+		.attr("fill", "#ABCDEF")
+		.attr("width",0)
+		.transition()
+		.duration(1000)
+		.attr("width", function(d){
+			//console.log("width: ",d.frequenza, xChart(d.frequenza))
+			return xChart(d.frequenza); });
 	//left axis
 	
-	chart.select('.y')
+	chart.select('.yAxis')
 		  .call(yAxis)
 		  .selectAll("text")
 		  
@@ -122,22 +121,22 @@ function updatehbcSkill(data){
 
 //set up chart
 var margin = {top: 80, right: 20, bottom: 35, left: 80};
-var width = 700;
-var height = 500;
+var widthBC = 600;
+var heightBC = 400;
 
 var svgS = d3.select("#hierbcskill")
 				.append("svg")
-				.attr("width", width + margin.left + margin.right)
-				.attr("height", height + margin.top + margin.bottom)
+				.attr("width", widthBC + margin.left + margin.right)
+				.attr("height", heightBC + margin.top + margin.bottom)
 				
 var chart = svgS.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var xChart = d3.scale.linear()
-				.range([0, width]);
+				.range([0, widthBC]);
 				
 var yChart = d3.scale.ordinal()
-	.rangeRoundBands([height, 0], .1) 
+	.rangeRoundBands([0, heightBC], .1) 
 
 
 var xAxis = d3.svg.axis().orient("top").scale(xChart);
@@ -147,7 +146,7 @@ var yAxis = d3.svg.axis().orient("left").scale(yChart);
 //left axis
 
 	chart.append("g")
-		  .attr("class", "y axis")
+		  .attr("class", "yAxis")
 		  .call(yAxis)
 		  
       	
@@ -155,7 +154,7 @@ var yAxis = d3.svg.axis().orient("left").scale(yChart);
 	//bottom axis
 	chart.append("g")
 		.attr("class", "xAxis")
-		.attr("transform", "translate("-10+"," + height + ")")
+		.attr("transform", "translate("-10+"," + heightBC + ")")
 		.call(xAxis)
 		.selectAll("text")
 			.style("text-anchor", "end")
@@ -171,10 +170,8 @@ var yAxis = d3.svg.axis().orient("left").scale(yChart);
 //add labels
 chart
 	.append("text")
-	.attr("transform", "translate(-70," +  (height+margin.bottom)/2 + ") rotate(-90)")
-	.text("Competenze");
+	.attr("transform", "translate(-70," +  (heightBC+margin.bottom)/2 + ") rotate(-90)");
 		
 chart
 	.append("text")
-	.attr("transform", "translate(" + (width/4) + "," + ( -30) + ")")
-	.text("Frequenza");
+	.attr("transform", "translate(" + (widthBC/4) + "," + ( -30) + ")");

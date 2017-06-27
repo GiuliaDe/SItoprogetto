@@ -71,7 +71,7 @@ function updatehbcFigura(data){
 	//console.log("xch",xChart)
 	
 	//get the width of each bar 
-	var barHeight = height / data.length;
+	var barHeight = heightBCf / data.length;
 	
 	//select all bars on the graph, take them out, and exit the previous data set. 
 	//then you can add/enter the new data set
@@ -88,14 +88,20 @@ function updatehbcFigura(data){
 		.attr("x",0)
 		.attr("y", function(d, i){ console.log("y: ", i*barHeight+1)
 			return  i * barHeight + 1 })
-		.attr("width", function(d){
-			//console.log("width: ",d.frequenza, xChart(d.frequenza))
-			return xChartF(d.frequenza); })
+		
 			//return d.frequenza;})
 		//.attr("width", function(d){console.log("valore", xChart(d.frequenza)) 
 		//	return height - xChart(d.frequenza); })
-		.attr("height", barHeight - 1)
-		.attr("fill", "#ABCDEF");
+		.attr("height", barHeight - 10)
+		.attr("fill", "#ABCDEF")
+		.attr("width", 0)
+		.transition()
+		.duration(1000)
+		.attr("width", function(d){
+			//console.log("width: ",d.frequenza, xChart(d.frequenza))
+			return xChartF(d.frequenza); })
+		;
+		
 	//left axis
 	
 	chartF.select('.yAxisF')
@@ -121,22 +127,22 @@ function updatehbcFigura(data){
 
 //set up chart
 var margin = {top: 80, right: 20, bottom: 35, left: 80};
-var width = 700;
-var height = 500;
+var widthBCf = 600;
+var heightBCf = 400;
 
 var svgF = d3.select("#hierbcfigure")
 				.append("svg")
-				.attr("width", width + margin.left + margin.right)
-				.attr("height", height + margin.top + margin.bottom)
+				.attr("width", widthBCf + margin.left + margin.right)
+				.attr("height", heightBCf + margin.top + margin.bottom)
 				
 var chartF = svgF.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var xChartF = d3.scale.linear()
-				.range([0, width]);
+				.range([0, widthBCf]);
 				
 var yChartF = d3.scale.ordinal()
-	.rangeRoundBands([height, 0], .1) 
+	.rangeRoundBands([0, heightBCf], .1) 
 
 
 var xAxisF = d3.svg.axis().orient("top").scale(xChartF);
@@ -155,7 +161,7 @@ var yAxisF = d3.svg.axis().orient("left").scale(yChartF);
 	//bottom axis
 	chartF.append("g")
 		.attr("class", "xAxisF")
-		.attr("transform", "translate("-10+"," + height + ")")
+		.attr("transform", "translate("-10+"," + heightBCf + ")")
 		.call(xAxisF)
 		.selectAll("text")
 			.style("text-anchor", "end")
@@ -170,13 +176,11 @@ var yAxisF = d3.svg.axis().orient("left").scale(yChartF);
 //add labels
 chartF
 	.append("text")
-	.attr("transform", "translate(-70," +  (height+margin.bottom)/2 + ") rotate(-90)")
-	.text("Competenze");
+	.attr("transform", "translate(-70," +  (heightBCf+margin.bottom)/2 + ") rotate(-90)");
 		
 chartF
 	.append("text")
-	.attr("transform", "translate(" + (width/4) + "," + ( -30) + ")")
-	.text("Frequenza");
+	.attr("transform", "translate(" + (widthBCf/4) + "," + ( -30) + ")");
 
 //use bothData to begin with
 //update(data);

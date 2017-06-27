@@ -195,6 +195,10 @@ height: 220px;
   line-height: inherit;
 }
 
+#div7 {
+  background-color:red;
+}
+
 /*
 #fotoDTV{
   background-color: black;
