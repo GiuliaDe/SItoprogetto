@@ -1,98 +1,151 @@
-var width="960"
-var height="600"
+
+    //Constants for the SVG
+    var widthFG = 700,
+        heightFG = 700;
+
+    //Set up the colour scale
+    
+    var colorsFG = d3.scale.ordinal()
+    .domain(['9','8','7', '6', '3', '4','5','2','1'])
+    .range(colorbrewer.Greens[9]);
 
 
-var svg = d3.select("#forcegraph")
-    .attr("width", width)
-    .attr("height", height);
-
-//var color = d3.scaleOrdinal(d3.schemeCategory20);
-
-var colors = d3.scaleOrdinal()
-    .domain(['1','2','3', '4', '5', '6','7','8','9'])
-    .range(['red', 'orange', 'blue', 'green', 'yellow', 'white', 'lime', 'black', 'navy' ])
-
-var simulation = d3.forceSimulation()
-    .force("link", d3.forceLink().id(function(d) { return d.id; }))
-
-    .force("charge", d3.forceManyBody().strength(-50))
-    .force("nodes", d3.forceCollide())
-    .force("center", d3.forceCenter(width / 2, height / 2))
-    .force('collision', d3.forceCollide().radius(function(d){return 5*Math.sqrt(d.count/Math.PI);}))
-    //.force('gravity',0.05)
-  //  .gravity(0.05)
-    ;
-
-d3.json("forcegraph.json", function(error, graph) {
-  if (error) throw error;
-
-  var link = svg.append("g")
-      .attr("class", "links")
-    .selectAll("line")
-    .data(graph.links)
-    .enter().append("line")
-      //.attr("stroke-width", function(d) { return Math.sqrt(d.value); })
-      .attr("stroke-width",function(d){return (d.value>50) ? (d.value/20):(0)})
-
-      ;
+    //Set up the force layout
+    var force = d3.layout.force()
+        .charge(function(d) {
+            return -d.weight * 100
+        })
+        .linkDistance(200)
+        .gravity(0.5)
+        .size([widthFG, heightFG]);
 
 
-  var node = svg.append("g")
-      .attr("class", "nodes")
-    .selectAll("circle")
-    .data(graph.nodes)
-    .enter().append("circle")
-    //.attr("r",5)
-      .attr("r", function(d){return (d.count>200) ? (Math.sqrt(d.count/Math.PI)):(0);})
-      .attr("fill", function(d) {
-        console.log("colore: ",colors, d.group)
-       // return color(d.group); })
-       return colors(d.group); })
-      .call(d3.drag()
-          .on("start", dragstarted)
-          .on("drag", dragged)
-          .on("end", dragended))
-      ;
+    //Append a SVG to the body of the html page. Assign this SVG as an object to svg
+    var svgFG = d3.select("#forcegraph").append("svg")
+        .attr("width", widthFG)
+        .attr("height", heightFG);
+
+    var linksFG = [];
+
+    //Read the data from the mis element 
+    d3.json("assets/data/f_graph.json", function(error, graph) {
+        if (error) throw error;
+        console.log("graph.nodes", graph.nodes)
+        console.log("graph.links", graph.links)
+
+        var edges = [];
+        graph.links.forEach(function(e) {
+            var sourceNode = graph.nodes.filter(function(n) {
+                return n.id === e.source;
+            })[0]
+            var targetNode = graph.nodes.filter(function(n) {
+                return n.id === e.target;
+            })[0];
+
+            edges.push({
+                source: sourceNode,
+                target: targetNode,
+                value: e.value
+            });
+        });
+
+        console.log("edges", edges)
+        var edges = edges.filter(function(d) {
+            return d.value > 50;
+        });
+        console.log("filtered edges", edges)
+            //Creates the graph data structure out of the json data
+        force.nodes(graph.nodes)
+            .links(edges)
+            .start();
+
+
+        //Create all the line svgs but without locations yet
+        var linksFG = svgFG.selectAll(".linkFG")
+            .data(function(d) {
+                return edges
+            })
+            .enter().append("line")
+            .attr("class", "linkFG")
+            .style("stroke-width", function(d) {
+                return Math.sqrt(d.value)/3;
+            });
 
 
 
-  node.append("title")
-      .text(function(d) { return d.id; });
+        //Do the same with the circles for the nodes - no 
+        //Changed
+        var nodeFG = svgFG.selectAll(".nodeFG")
+            .data(graph.nodes)
+            .enter().append("g")
+            .attr("class", "nodeFG")
+            // .on('mouseover', tip.show) //Added
+            // .on('mouseout', tip.hide) //Added 
+            .call(force.drag);
 
-  simulation
-      .nodes(graph.nodes)
-      .on("tick", ticked);
+        nodeFG.append("circle")
+            .attr("r", function(d) {
+                return Math.sqrt(d.count/Math.PI);
+            }) //d.weight
 
-  simulation.force("link")
-      .links(graph.links)
-      ;
+        .style("fill",  "#8FC983")
+            .style("stroke","#8FC983")
 
-  function ticked() {
-    link
-        .attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
+         nodeFG.append("title")
+             .attr("dx", 10)
+             .attr("dy", ".35em")
+             .text(function(d) { return d.id });
+        //End changed
 
-    node
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
-  }
-});
 
-function dragstarted(d) {
-  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-  d.fx = d.x;
-  d.fy = d.y;
-}
+        //Now we are giving the SVGs co-ordinates - the force layout is generating the co-ordinates which this code is using to update the attributes of the SVG elements
+        force.on("tick", function() {
+            linksFG.attr("x1", function(d) {
 
-function dragged(d) {
-  d.fx = d3.event.x;
-  d.fy = d3.event.y;
-}
+                    return d.source.x;
+                })
+                .attr("y1", function(d) {
+                    return d.source.y;
+                })
+                .attr("x2", function(d) {
+                    return d.target.x;
+                })
+                .attr("y2", function(d) {
+                    return d.target.y;
+                });
 
-function dragended(d) {
-  if (!d3.event.active) simulation.alphaTarget(0);
-  d.fx = null;
-  d.fy = null;
-}
+            //Changed
+
+            d3.selectAll("circle").attr("cx", function(d) {
+                    return d.x;
+                })
+                .attr("cy", function(d) {
+                    return d.y;
+                });
+
+            d3.selectAll("text").attr("x", function(d) {
+                    return d.x;
+                })
+                .attr("y", function(d) {
+                    return d.y;
+                });
+
+            //End Changed
+
+        });
+
+        var radius = d3.scale.sqrt()
+            .range([5, 15])
+            .domain([1, 36]);
+
+
+    });
+
+    // //Do the same with the circles for the nodes - no
+    // var tip = d3.tip()
+    //     .attr('class', 'd3-tip')
+    //     .offset([-10, 0])
+    //     .html(function (d) {
+    //     return  "ID: "+d.id +"</br>Degree: "+d.weight;
+    // })
+    // svg.call(tip);
