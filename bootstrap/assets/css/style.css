@@ -104,8 +104,9 @@ a.btn {
 .row.featurette {
   height: inherit;
   margin-bottom: 10px;
-  background-color: #e9e9e9;
+  background-color: #e9e9e9;  
 }
+
 
 p {
   font-size: 20px;
@@ -220,10 +221,16 @@ height: 220px;
   background-color: #C9C9C9;
 }
 
+*/
 
-#fotoDTV {
-  background-color: #121621;
+#fotoDTV{
+    background-color: #e9e9e9;
   background-size:cover;
-  border: solid;
-  display: block;
-}*/
+  /*border: solid;
+  display: block;*/
+}
+
+#fotoDTV .container {
+
+  margin-top: 30px;
+}
