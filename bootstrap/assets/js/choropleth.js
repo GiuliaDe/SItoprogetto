@@ -1,5 +1,5 @@
-var width = 700;
-    height = 500;
+var width = 500;
+    height = 600;
 
 // MAP Preparation
 var svg = d3.select("#choropleth")
