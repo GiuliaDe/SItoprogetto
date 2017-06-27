@@ -3,8 +3,8 @@
 	var divWidth = obj.offsetWidth;
 
 	var margin = {top: 30, right: 0, bottom: 20, left: 0},
-		width = divWidth -25,
-		height = 540 - margin.top - margin.bottom,
+		widthTM = divWidth -25,
+		heightTM = 540 - margin.top - margin.bottom,
 		formatNumber = d3.format(",%"),
 		colorDomain = [-.1, 0, .1],
 		colorRange = ['#dda8db', '#ebf2f7', '#8FC983'],
@@ -12,15 +12,15 @@
 
 	// sets x and y scale to determine size of visible boxes
 	var x = d3.scale.linear()
-		.domain([0, width])
-		.range([0, width]);
+		.domain([0, widthTM])
+		.range([0, widthTM]);
 
 	var y = d3.scale.linear()
-		.domain([0, height])
-		.range([0, height]);
+		.domain([0, heightTM])
+		.range([0, heightTM]);
 
 	// adding a color scale
-	var color = d3.scale.linear()
+	var colorTM = d3.scale.linear()
 		.domain(colorDomain)
 		.range(colorRange);
 
@@ -28,24 +28,24 @@
 	var treemap = d3.layout.treemap()
 		.children(function(d, depth) { return depth ? null : d._children; })
 		.sort(function(a, b) { return a.value - b.value; })
-		.ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
+		.ratio(heightTM / widthTM * 0.5 * (1 + Math.sqrt(5)))
 		.round(false);
 
-	var svg = d3.select("#treemap").append("svg")
-		.attr("width", width + margin.left + margin.right)
-		.attr("height", height + margin.bottom + margin.top)
+	var svgTM = d3.select("#treemap").append("svg")
+		.attr("width", widthTM + margin.left + margin.right)
+		.attr("height", heightTM + margin.bottom + margin.top)
 		.style("margin-left", -margin.left + "px")
 		.style("margin.right", -margin.right + "px")
 	  .append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 		.style("shape-rendering", "crispEdges");
 
-	var grandparent = svg.append("g")
+	var grandparent = svgTM.append("g")
 		.attr("class", "grandparent");
 
 	grandparent.append("rect")
 		.attr("y", -margin.top)
-		.attr("width", width)
+		.attr("width", widthTM)
 		.attr("height", margin.top);
 
 	grandparent.append("text")
@@ -57,8 +57,8 @@
 	// functions
 	function initialize(root) {
 		root.x = root.y = 0;
-		root.dx = width;
-		root.dy = height;
+		root.dx = widthTM;
+		root.dy = heightTM;
 		root.depth = 0;
 	  }
 
@@ -123,7 +123,7 @@
 		return (parseInt(hexcolor.replace('#', ''), 16) > 0xffffff/3) ? 'black':'white';
 	}
 
-	d3.json("flare2.json", function(root) {
+	d3.json("assets/data/flare2.json", function(root) {
 	  console.log(root)
 	  initialize(root);
 	  accumulate(root);
@@ -141,9 +141,9 @@
 		grandparent
 		  .datum(d.parent)
 		  .select("rect")
-		  .attr("fill", function(){console.log(color(d.value/100000)); return color(d['value']/1000000)})
+		  .attr("fill", function(){console.log(colorTM(d.value/100000)); return colorTM(d['value']/1000000)})
 
-		var g1 = svg.insert("g", ".grandparent")
+		var g1 = svgTM.insert("g", ".grandparent")
 			.datum(d)
 			.attr("class", "depth");
 
@@ -199,11 +199,11 @@
 		  y.domain([d.y, d.y + d.dy]);
 
 		  // Enable anti-aliasing during the transition.
-		  svg.style("shape-rendering", null);
+		  svgTM.style("shape-rendering", null);
 
 		  // Draw child nodes on top of parent nodes.
 
-		  svg.selectAll(".depth").sort(function(a, b) {
+		  svgTM.selectAll(".depth").sort(function(a, b) {
 				console.log("sel all depth");
 				 return a.depth - b.depth; });
 
@@ -225,7 +225,7 @@
 
 		  // Remove the old node when the transition is finished.
 		  t1.remove().each("end", function() {
-			svg.style("shape-rendering", "crispEdges");
+			svgTM.style("shape-rendering", "crispEdges");
 			transitioning = false;
 		  });
 		}
@@ -243,7 +243,7 @@
 			.attr("y", function(d) { return y(d.y); })
 			.attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
 			.attr("height", function(d) { return y(d.y + d.dy) - y(d.y); })
-			.attr("fill", function(d){return color(parseFloat(d.value/200000));});}
+			.attr("fill", function(d){return colorTM(parseFloat(d.value/200000));});}
 
 
 	  function foreign(foreign){ /* added */

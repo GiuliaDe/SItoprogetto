@@ -1,13 +1,15 @@
 var width = 700;
-    height = 430;
+    height = 500;
 
 
-var svg = d3.select("#sankey")
+var svgSan = d3.select("#sankey_all")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
     //width = +svg.attr("width"),
     //height = +svg.attr("height");
+var g = svgSan.append("g").
+        attr("class","gsan");
 
 var formatNumber = d3.format(",.0f"),
     format = function(d) { return formatNumber(d) + " TWh"; },
@@ -18,27 +20,21 @@ var sankey = d3.sankey()
     .nodePadding(10)
     .extent([[1, 1], [width - 1, height - 6]]);
 
-
-
-
-
 function updateData(){
 
-    d3.select(".links").remove();
-d3.select(".nodes").remove();
+    d3.select(".links_s").remove();
+d3.select(".nodes_s").remove();
 
-var link = svg.append("g")
-    .attr("class", "links")
+var link = svgSan.append("g")
+    .attr("class", "links_s")
     .attr("fill", "None")
     .attr("stroke", "#ABCDEF")
-    .attr("stroke-opacity", 0.2)
+    .attr("stroke-opacity", 0.8)
     .selectAll("g");
 
 
-
-
-var node = svg.append("g")
-    .attr("class", "nodes")
+var node = svgSan.append("g")
+    .attr("class", "nodes_s")
     .attr("font-family", "sans-serif")
     .attr("font-size", 10)
     //.on("mouseover",handleMouseOver)
@@ -46,7 +42,7 @@ var node = svg.append("g")
 
 
     console.log("update data:")
-d3.json("energy.json", function(error, energy) {
+d3.json("assets/data/energy.json", function(error, energy) {
  // if (error) throw error;
 
 console.log(energy)
@@ -104,27 +100,28 @@ console.log(energy)
 
 function updateDataAll(){
 
-d3.select(".links").remove();
-d3.select(".nodes").remove();
+d3.select(".links_s").remove();
+d3.select(".nodes_s").remove();
 
-var link = svg.append("g")
-    .attr("class", "links")
+var link = svgSan.append("g")
+    .attr("class", "links_s")
     .attr("fill", "None")
     .attr("stroke", "#ABCDEF")
-    .attr("stroke-opacity", 0.2)
-    .selectAll("g");
+    .attr("stroke-opacity", 0.8)
+    .selectAll("g")
+    ;
 
 
 
-var node = svg.append("g")
-    .attr("class", "nodes")
+var node = svgSan.append("g")
+    .attr("class", "nodes_s")
     .attr("font-family", "sans-serif")
     .attr("font-size", 10)
     //.on("mouseover",handleMouseOver)
     .selectAll("g");
 
     console.log("update dataAll")
-d3.json("energy3.json", function(error, energy) {
+d3.json("assets/data/energy3.json", function(error, energy) {
  // if (error) throw error;
 
 console.log(energy)
@@ -177,6 +174,7 @@ console.log(energy)
 
   node.append("title")
       .text(function(d) { return d.name + "\n" + format(d.value); });
+      
 });
 }
 
