@@ -96,7 +96,7 @@ d3.queue()
 var attributesHandler = {
     "digitalJobs": {
         value: "digitalJobs",
-        label: "digital jobs",
+        label: "Lavori digitali",
         count: digi_prov,
         colorScale: digitalJobsColor,
         valueSelector: function(d) {
@@ -104,11 +104,11 @@ var attributesHandler = {
             return digitalJobsColor(digi_prov[d.properties.SIGLA] || 0); // se indefinito assegna ZERO
         },
         title: "Digital Jobs",
-        description: "Numero di offerte per lavori digitali per provincia"
+        description: "Numero di offerte per lavori con competenze digitali per provincia"
     },
     "allJobs": {
         value: "allJobs",
-        label: "all jobs",
+        label: "Lavori totali",
         count: all_prov,
         colorScale: allJobsColor,
         valueSelector: function(d) {
