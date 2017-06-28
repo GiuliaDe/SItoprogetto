@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- codice per ottimizzazione device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- codice per ottimizzazione device -->
 
   <title>DTV project</title>
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -32,270 +34,374 @@
 
 
   <!-- <script type="text/javascript" src="assets/js/sankey.js"></script> -->
-   <script type="text/javascript" src="assets/js/choropleth.js"></script>
-<!--  <script type="text/javascript" src="assets/js/treemap.js"></script> -->
-  
+  <script type="text/javascript" src="assets/js/choropleth.js"></script>
+  <!--  <script type="text/javascript" src="assets/js/treemap.js"></script> -->
 
 
 
 
-  <link rel="stylesheet" id="font-awesome-css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" type="text/css" media="screen">
 
-  <script src="https://unpkg.com/d3-array@1"></script>
-  <script src="https://unpkg.com/d3-collection@1"></script>
-  <script src="https://unpkg.com/d3-path@1"></script>
-  <script src="https://unpkg.com/d3-shape@1"></script>
-  <script src="https://unpkg.com/d3-sankey@0"></script>
+  <link rel="stylesheet" id="font-awesome-css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" type="text/css"
+    media="screen">
+
+    <script src="https://unpkg.com/d3-array@1"></script>
+    <script src="https://unpkg.com/d3-collection@1"></script>
+    <script src="https://unpkg.com/d3-path@1"></script>
+    <script src="https://unpkg.com/d3-shape@1"></script>
+    <script src="https://unpkg.com/d3-sankey@0"></script>
 
 
-  <!-- <script type="text/javascript" src="barChart/d3.min.js"></script> --> <!--codice per barchart-->
+    <!-- <script type="text/javascript" src="barChart/d3.min.js"></script> -->
+    <!--codice per barchart-->
 
 </head>
-  <body>
+
+<body>
 
 
-    <!--script src="https://d3js.org/d3.v4.min.js"></script--> <!--riferimento a d3.v4-->
+  <!--script src="https://d3js.org/d3.v4.min.js"></script-->
+  <!--riferimento a d3.v4-->
 
 
 
-    <nav class="navbar scrolled navbar-inverse navbar-fixed-top"> <!-- Collect the nav links, forms, and other content for toggling -->
-      <ul class="nav navbar-nav">
-        <li> <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-           <a class="navbar-brand" href="#fotoDTV">Chi siamo</a> </li>
-        <li><a href="#lav-comp"> Competenze e professioni digitiali </a></li>
-        <!--li><a href="#"> Link </a></li-->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Esplora <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#domanda">La domanda</a></li> <!-- si possono aggiungere link ad altre pagine, se necessario -->
-            <li><a href="#ricerca">La ricerca</a></li>
-            <li><a href="#conclusione">Le competenze oggi</a></li>
-            <!--li><a href="#">Separated link</a></li>
+  <nav class="navbar scrolled navbar-inverse navbar-fixed-top">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <ul class="nav navbar-nav">
+      <li>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <a class="navbar-brand" href="#fotoDTV">Chi siamo</a> </li>
+      <li><a href="#lav-comp"> Competenze e professioni digitiali </a></li>
+      <!--li><a href="#"> Link </a></li-->
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Esplora <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#domanda">La domanda</a></li>
+          <!-- si possono aggiungere link ad altre pagine, se necessario -->
+          <li><a href="#ricerca">La ricerca</a></li>
+          <li><a href="#conclusione">Le competenze oggi</a></li>
+          <!--li><a href="#">Separated link</a></li>
             <li><a href="#">One more separated link</a></li-->
-        </li>
+      </li>
       </ul>
     </ul>
-  </div>
-</nav><!-- /.navbar-collapse -->
-</div> <!--chiude navbar collapse-->
-
-<header>
-  <div class="container">
-    <div class="carousel-caption">
-      <h1>CURA DIGITALE </h1> <h1>le nuove competenze contro la disoccupazione</h1>
-      <p>
-      <!--a class="btn btn-lg btn-default active" href="#" role="button" style='margin-right:10px'>Prova</a>
-      <a class="btn btn-lg btn-default active" href="#" role="button">Prova</a-->
-    </p>
     </div>
+  </nav>
+  <!-- /.navbar-collapse -->
   </div>
-</header>
+  <!--chiude navbar collapse-->
 
-<div class="scroll-top-wrapper "> <!-- bottone di ritorno top page-->
-	<span class="scroll-top-inner">
+  <header>
+    <div class="container">
+      <div class="carousel-caption">
+        <h1>CURA DIGITALE </h1>
+        <h1>le nuove competenze contro la disoccupazione</h1>
+        <p>
+          <!--a class="btn btn-lg btn-default active" href="#" role="button" style='margin-right:10px'>Prova</a>
+      <a class="btn btn-lg btn-default active" href="#" role="button">Prova</a-->
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <div class="scroll-top-wrapper ">
+    <!-- bottone di ritorno top page-->
+    <span class="scroll-top-inner">
 		<i class="fa fa-2x fa-arrow-circle-up"></i>
 	</span>
-</div>
+  </div>
 
 
-<!-- START THE FEATURETTES, struttura pagina -->
- <div class="container struttura">
+  <!-- START THE FEATURETTES, struttura pagina -->
+  <div class="container struttura">
 
     <div class="row featurette" id="domanda">
-    <div class="col-lg-3"> </div>
-    <div class="col-lg-6">
-      <div class="paragrafo"><h1>La domanda</h1></div>
+      <div class="col-lg-3"> </div>
+      <div class="col-lg-6">
+        <div class="paragrafo">
+          <h1>La domanda</h1>
+        </div>
+      </div>
+      <div class="col-lg-3"></div>
     </div>
-     <div class="col-lg-3"></div>
-  </div>
 
-  <div class="row featurette">
-    <div class="col-lg-3"> </div>
-    <div class="col-lg-6" >
-      <h2 class="featurette-heading"></h2>
-      <p>Cosa non deve mancare nel mio curriculum per essere assunto? In Italia il dibattito sulle possibilità di lavoro per i giovani è più che mai acceso anche da argomenti come le partite a <a href="http://www.corriere.it/scuola/17_marzo_27/poletti-mandare-curriculum-meglio-giocare-calcetto-7dadec68-131a-11e7-be9a-6ca09ed8307d.shtml?refresh_ce-cp">calcetto</a> o da soluzioni tanto vaghe quanto può essere la definizione di <a href="http://www.lastampa.it/2016/10/21/tecnologia/idee/le-competenze-digitali-che-servono-per-trovare-lavoro-2vucMCzwGq3g52Sqdys70M/pagina.html">“emotività digitale”</a>. </p><p> La storia di Jacopo, 30enne originario di Vicenza, amministratore di sistema e addetto al customer care in un’azienda locale, apre però una prospettiva diversa sull’argomento. A giudicare dalla sua esperienza presentare delle competenze digitali specifiche potrebbe essere cruciale. A 24 anni e senza esperienza lavorativa pregressa ha firmato un contratto di apprendistato, diventato poi a tempo indeterminato, iniziando così una brillante carriera nel mondo delle tecnologie digitali. Tutto ciò si è reso possibile grazie alla sua passione e ad un curriculum in cui citava “le competenze acquisite con l'esperienza personale riguardanti l'elettronica, la sicurezza informatica, l'ambito delle reti, il mondo di Gnu/Linux e dell'open source”. </p><p>
-      La prospettiva non è certo nuova e un’altra vicenda simile ce lo dimostra, l’ambientazione, però, ha ormai più di quarantanni. La passione per l’elettronica e l’informatica di Gianni, 63enne di origini toscane, lo ha portato dopo la maturità classica a conseguire una qualifica da Programmatore Elettronico e, sfruttando l’esperienza accumulata negli di frequenza ad Ingegneria Elettronica, dove non ha però conseguito la laurea, si è inserito nel mondo del lavoro. I suoi primi impieghi, come “analista programmatore presso un centro servizi e, successivamente, presso una software house”, gli sono serviti per rientrare in università, questa volta con un contratto a tempo indeterminato. Oggi si occupa di “pianificazione e gestione delle risorse, sviluppo e gestione di software applicato alla ricerca e all'assistenza, amministrazione di sistemi, applicativi e reti.”</p><p>
-      La domanda che ci poniamo sembra quindi avere una portata ben più ampia e rappresentare una solida realtà con cui fare i conti. Quanto contano dunque le competenze per arrivare alla tanto agognata firma sul contratto?</p><p>Ci siamo immersi nel mare degli annunci reperibili sulla piattaforma Indeed e abbiamo  scoperto che le esperienze di Jacopo e Gianni potrebbero non essere dei casi isolati.
-      </p>
+    <div class="row featurette">
+      <div class="col-lg-3"> </div>
+      <div class="col-lg-6">
+        <h2 class="featurette-heading"></h2>
+        <p>Cosa non deve mancare nel mio curriculum per essere assunto? In Italia il dibattito sulle possibilità di lavoro per
+          i giovani è più che mai acceso anche da argomenti come le partite a <a href="http://www.corriere.it/scuola/17_marzo_27/poletti-mandare-curriculum-meglio-giocare-calcetto-7dadec68-131a-11e7-be9a-6ca09ed8307d.shtml?refresh_ce-cp">calcetto</a>          o da soluzioni tanto vaghe quanto può essere la definizione di <a href="http://www.lastampa.it/2016/10/21/tecnologia/idee/le-competenze-digitali-che-servono-per-trovare-lavoro-2vucMCzwGq3g52Sqdys70M/pagina.html">“emotività digitale”</a>.
+          </p>
+        <p> La storia di Jacopo, 30enne originario di Vicenza, amministratore di sistema e addetto al customer care in un’azienda
+          locale, apre però una prospettiva diversa sull’argomento. A giudicare dalla sua esperienza presentare delle competenze
+          digitali specifiche potrebbe essere cruciale. A 24 anni e senza esperienza lavorativa pregressa ha firmato un contratto
+          di apprendistato, diventato poi a tempo indeterminato, iniziando così una brillante carriera nel mondo delle tecnologie
+          digitali. Tutto ciò si è reso possibile grazie alla sua passione e ad un curriculum in cui citava “le competenze
+          acquisite con l'esperienza personale riguardanti l'elettronica, la sicurezza informatica, l'ambito delle reti,
+          il mondo di Gnu/Linux e dell'open source”. </p>
+        <p>
+          La prospettiva non è certo nuova e un’altra vicenda simile ce lo dimostra, l’ambientazione, però, ha ormai più di quarantanni.
+          La passione per l’elettronica e l’informatica di Gianni, 63enne di origini toscane, lo ha portato dopo la maturità
+          classica a conseguire una qualifica da Programmatore Elettronico e, sfruttando l’esperienza accumulata negli di
+          frequenza ad Ingegneria Elettronica, dove non ha però conseguito la laurea, si è inserito nel mondo del lavoro.
+          I suoi primi impieghi, come “analista programmatore presso un centro servizi e, successivamente, presso una software
+          house”, gli sono serviti per rientrare in università, questa volta con un contratto a tempo indeterminato. Oggi
+          si occupa di “pianificazione e gestione delle risorse, sviluppo e gestione di software applicato alla ricerca e
+          all'assistenza, amministrazione di sistemi, applicativi e reti.”</p>
+        <p>
+          La domanda che ci poniamo sembra quindi avere una portata ben più ampia e rappresentare una solida realtà con cui fare i
+          conti. Quanto contano dunque le competenze per arrivare alla tanto agognata firma sul contratto?</p>
+        <p>Ci siamo immersi nel mare degli annunci reperibili sulla piattaforma Indeed e abbiamo scoperto che le esperienze
+          di Jacopo e Gianni potrebbero non essere dei casi isolati.
+        </p>
+      </div>
+      <div class="col-lg-3"></div>
     </div>
-     <div class="col-lg-3"></div>
-  </div>
+
 
   <!--hr class="featurette-divider"-->
 
-  <div class="row featurette" id="ricerca">
-    <div class="col-lg-3"> </div>
-    <div class="col-lg-6">
-      <div class="paragrafo"><h1>La ricerca</h1></div>
+
+    <div class="row featurette" id="ricerca">
+      <div class="col-lg-3"> </div>
+      <div class="col-lg-6">
+        <div class="paragrafo">
+          <h1>La ricerca</h1>
+        </div>
+      </div>
+      <div class="col-lg-3"></div>
     </div>
-     <div class="col-lg-3"></div>
-  </div>
 
 <!--hr class="featurette-divider"-->
 
-  <div class="row featurette">
-    <div class="col-lg-3"> </div>
-    <div class="col-lg-6">
-      <h2 class="featurette-heading"> Disoccupazione alta - soprattutto al sud</h2>
-      <p>Innanzitutto, in che panorama ci troviamo? La disoccupazione in Italia nell’ultimo decennio ha assunto tinte molto fosche. Dicembre 2016 si è chiuso con una tasso generale di disoccupazione al 12% che supera il 40% nella fascia dei giovani. Ma il 2017 si è aperto all’insegna di una possibile, seppur timida, inversione di rotta. Secondo l’istat nel primo trimestre, infatti, l'occupazione si mostra in crescita - circa +0,2% - ed in particolare pare “essersi prodotta un’apertura della domanda di lavoro italiana verso quella parte di giovani – più spesso senza esperienze lavorative ma con un patrimonio di competenze e conoscenze costituito più di recente”, così come affermato a Lavoce.info da Raffaella Casciolli (Istat). </p><p>
-      E proprio queste competenze emergono infatti nella ricerca e in altre simili come quella proposta da Assolombarda, Confindustria Milano, Monza e Brianza e l’Università di Milano Bicocca-Crisp e titolata “Alla ricerca delle competenze 4.0”. Ma anche nella recentissima pubblicazione dell’Osservatorio delle Competenze Digitali 2017 a cui, tra gli altri, hanno partecipato il MIUR e l’Agenzia per l’Italia Digitale del Consiglio dei Ministri. </p><p>
-      In questo quadro, esistono ovviamente delle differenze a livello locale nella distribuzione del lavoro.  Così come mostrano le offerte lavorative comparse su Indeed dal 1 gennaio al 20 maggio 2017, in testa alla classifica delle province si afferma Milano seguita, con la metà degli annunci, da Roma, che a sua volta distacca notevolmente Torino, Bologna, Padova e Brescia. Il nord si caratterizza generalmente per un maggior numero di offerte seguito da centro, sud e isole. </p><p>
-      Non stupisce scoprire che lo stesso podio e la stessa distribuzione generale vengano mantenuti anche quando si osservano i lavori che contengono competenze digitali.
-      </p>
-    </div>
-     <div class="col-lg-3"></div>
-  </div>
-
-<!--hr class="featurette-divider"-->
-
-
-
-    <div class="row featurette"> 
-    <div class="col-lg-3"></div>
-      <div class="col-lg-6" id = "mappaIta">
-      <div class="col-xs-8" id="choropleth"> </div>
-        <div id="legendMap" class="col-md-4 col-xs-4 col-sm-4 col-lg-4"></div>
-        <div id="instructions" class="col-md-4"></div>   <!-- a legend for the map -->
-        <div id="mapDescription" class="col-md-4"> map description </div></div> <!-- buttons to switch variables -->
-         <div class="col-lg-3"></div>
-    
-</div>
-
-  <!--hr class="featurette-divider"-->
- 
-
-
-  <div class="row featurette">
-    <div class="col-lg-3"> </div>
-    <div class="col-lg-6">
-      <h2 class="featurette-heading"> Analisi e progettazione software - la professione digitale più cercata</h2>
-      <p>Quali sono i lavori considerati? La gerarchia di figure professionali è quella offerta da Istat, le 9 categorie fondamentali possono essere osservate a sotto. Attraverso il grafico è possibile esplorare la frammentazione delle categorie su 5 livelli. Tra questi, il livello di dettaglio più specifico rappresenta le figure lavorative considerate nella ricerca. </p><p>
-      Gli annunci su cui sono state effettuate le analisi sono quelli compatibili con questa gerarchia, nonostante le sue limitazioni. Come già evidenziato dall’Osservatorio delle Competenze Digitali e da Assolombarda, infatti, le figure emergenti nel campo digitale sono molte e, di queste, solo alcune trovano già spazio nella classificazione Istat. (inserire qualche esempio di queste figure)
-      </p>
-    </div>
-     <div class="col-lg-3"></div>
-  </div>
-
-
-  <div class="row featurette">
-    <div class="col-lg-1">
-    </div>
-    <div class="col-lg-10">
-      <div class = "visual" id="treemap"> </div>
-    </div>
-    <div class="col-lg-1">
-    </div>
-  </div>
-
-  <div class="row featurette">
-    <div class="col-lg-1">
-    </div>
-    <div class="col-lg-10">
-      <div class="caption"> <caption>La dimensione e la tonalità rappresentano il numero di lavori sul totale visualizzato</caption> </div>
-    </div>
-    <div class="col-lg-1">
-    </div>
-  </div>
-
-
-  <!--hr class="featurette-divider"-->
-
-  <div class="row featurette">
-    <div class="col-lg-3"> </div>
-    <div class="col-lg-6">
-      <h2 class="featurette-heading">Pacchetto Office il più gettonato</h2>
-      <p class="lead">E quali competenze? In questa ricerca ci siamo affidati a WikiData, la struttura di riferimento della più conosciuta enciclopedia digitale Wikipedia che ne raccoglie e categorizza le voci rendendole disponibili online sotto forma di open data. Da qui sono stati estratti 11mila tra linguaggi di programmazione, ambienti di sviluppo e software applicativi andando a costruire l’insieme delle competenze ricercate. Nel grafico sottostante si possono osservare le più frequenti tra le oltre 1600 distinte competenze che sono emerse dall’incrocio con le offerte lavorative. </p><p>
-      I numeri riscontrati confermano quanto già riportato dalla ricerca di Assolombarda ma svelano anche competenze trasversali. Al primo posto, infatti, spicca il Pacchetto Office seguito ad una certa distanza da Sql, Java, JavaScript e AutoCad.
-      </p>
-    </div>
-    <div class="col-lg-3"> </div>
+    <div class="row featurette">
+      <div class="col-lg-3"> </div>
+      <div class="col-lg-6">
+        <h2 class="featurette-heading"> Disoccupazione alta - soprattutto al sud</h2>
+        <p>Innanzitutto, in che panorama ci troviamo? La disoccupazione in Italia nell’ultimo decennio ha assunto tinte molto
+          fosche. Dicembre 2016 si è chiuso con una tasso generale di disoccupazione al 12% che supera il 40% nella fascia
+          dei giovani. Ma il 2017 si è aperto all’insegna di una possibile, seppur timida, inversione di rotta. Secondo l’istat
+          nel primo trimestre, infatti, l'occupazione si mostra in crescita - circa +0,2% - ed in particolare pare “essersi
+          prodotta un’apertura della domanda di lavoro italiana verso quella parte di giovani – più spesso senza esperienze
+          lavorative ma con un patrimonio di competenze e conoscenze costituito più di recente”, così come affermato a Lavoce.info
+          da Raffaella Casciolli (Istat). </p>
+        <p>
+          E proprio queste competenze emergono infatti nella ricerca e in altre simili come quella proposta da Assolombarda, Confindustria
+          Milano, Monza e Brianza e l’Università di Milano Bicocca-Crisp e titolata “Alla ricerca delle competenze 4.0”.
+          Ma anche nella recentissima pubblicazione dell’Osservatorio delle Competenze Digitali 2017 a cui, tra gli altri,
+          hanno partecipato il MIUR e l’Agenzia per l’Italia Digitale del Consiglio dei Ministri. </p>
+        <p>
+          In questo quadro, esistono ovviamente delle differenze a livello locale nella distribuzione del lavoro. Così come mostrano
+          le offerte lavorative comparse su Indeed dal 1 gennaio al 20 maggio 2017, in testa alla classifica delle province
+          si afferma Milano seguita, con la metà degli annunci, da Roma, che a sua volta distacca notevolmente Torino, Bologna,
+          Padova e Brescia. Il nord si caratterizza generalmente per un maggior numero di offerte seguito da centro, sud
+          e isole. </p>
+        <p>
+          Non stupisce scoprire che lo stesso podio e la stessa distribuzione generale vengano mantenuti anche quando si osservano
+          i lavori che contengono competenze digitali.
+        </p>
       </div>
-
-
-
-  <div class="row featurette">
-    <div class="col-lg-3"> </div>  
-    <div class="col-lg-6">
-      <div class="visual" id="allSkillsBC"> </div>
-            <div class="col-lg-3"> </div>  
+      <div class="col-lg-3"></div>
     </div>
-</div>
-
-  <div class="row featurette">
-    <div class="col-lg-3"> </div>
-    <div class="col-lg-6">
-      <h2 class="featurette-heading">Le competenze più apprezzate sono trasversali</h2>
-      <p>Cosa significano queste classifiche? Principalmente, ne emerge la pervasività delle competenze digitali in un’ampia varietà di lavori tanto che un pacchetto di software ad uso generale (Office) si guadagna la vetta. Ma la presenza di AutoCad (software dedicato alla modellazione tridimensionale usato da ingegneri, architetti e non solo) nei primi 5 posti sottolinea anche la centralità di queste competenze per figure che non sono prettamente informatiche. Non stupisce invece vedere, a questo livello della classifica , un linguaggio per la gestione dei database (Sql), un linguaggio funzionale allo sviluppo di applicazioni back-end nelle aziende ma fondamentale anche nella creazione di applicazioni per smartphone (Java) e di un linguaggio finalizzato all’interazione con gli utenti nelle pagine web (JavaScript). </p><p>
-      Ciò che si dimostra ancor più interessante è la trasversalità di queste competenze. Se, infatti, alcune di esse potrebbero apparire come legate ad una specifica figura è invece verificabile l’esatto contrario. La maggioranza si dimostra in grado di soddisfare le esigenze di svariate figure professionali permettendo il dialogo tra ruoli diversi intorno ad un unico software o linguaggio di programmazione.
-      </p>
-    </div>
-    <div class="col-lg-3"> </div>
-      </div>
-
-
-
-
-  <div class="row featurette">
-    <div class="col-lg-3"> </div>  
-    <div class="col-lg-6">
-      <div class="visual" id="sankey_all">  </div>     
-        <button id="but" onclick="updateData()">Top 10</button>
-        <button id="butAll" onclick="updateDataAll()">Altre</button></div>
-            <div class="col-lg-3"> </div>  
-    
-</div>
-
-
-  <div class="row featurette" id="conclusione">
-    <div class="col-lg-3"> </div>
-    <div class="col-lg-6">
-      <div class="paragrafo"><h1>Le competenze oggi</h1></div>
-    </div>
-     <div class="col-lg-3"></div>
-  </div>
-
-
-  <div class="row featurette">
-    <div class="col-lg-3"> </div>
-    <div class="col-lg-6">
-      <h2 class="featurette-heading"></h2>
-      <p>Quale direzione per il presente ed il futuro? Osserviamo la formazione di una rete di figure professionali in grado di aprire un dialogo su linguaggi comuni e, così, collegate nel lavoro e nel digitale. </p><p>
-      Così come la tecnologia si rende protagonista un po’ alla volta in ogni ambito della nostra esperienza quotidiana, anche il nostro lavoro si digitalizza di conseguenza. Giacomo Magnabosco - coordinatore nazionale degli iscritti under 40 di Ala Assoarchitetti - racconta il ruolo fondamentale di applicativi specifici “in quasi tutti i campi, da quello tecnico a quello compositivo, ma anche nella gestione parametrica di forme e strutture oltre che per effettuare verifiche energetiche”. Ma la spinta alla digitalizzazione arriva anche dal livello istituzionale. Infatti, “la varietà delle pratiche amministrative e tecniche richieste dalle varie normative, non solo italiane, spingono la professione verso software che possano rispondere in modo veloce, reversibile e qualitativamente ottimale alle richieste”. </p><p>
-      In conclusione, dotarsi di competenze tecniche specifiche assume valore nella “capacità di essere spendibili sul mercato sia come freelance che come dipendente. È indiscutibile anche che molte nuove tecnologie, associate ai calcolatori, permettano di esplorare questioni sia progettuali che normative le quali, se affrontate con tecniche tradizionali, sottrarrebbero molto tempo all'attività”. </p><p>
-      La corsa alle competenze è dunque aperta.
-      </p>
-    </div>
-
-    <div class="col-lg-3"> </div>
-      </div>
-
-
-  <div class="row featurette">
-    <div class="col-lg-3"> </div>
-    <div class="col-lg-6" id="forcegraph">
-    </div>
-    <div class="col-lg-3"> </div>
-      </div>
-
-
-  <div class="row featurette" id="lav-comp">
-    <div class="col-lg-12 paragrafo"><h1>Competenze e professioni digitiali</h1>
-    </div>
-      </div>
-
-  <div class="row featurette" >
-    <div class="col-lg-6"><caption>Quale lavoro ti interessa? Le 10 competenze che ti servono</caption>
-    </div>
-        <div class="col-lg-6"><caption>Quale competenza hai? I 10 lavori che la richiedono</caption>
-    </div>
-      </div>
 
     <!--hr class="featurette-divider"-->
 
-  <div class="row featurette">
-    <div id="div7">
-    <div class="col-md-6">
-    <select id="indsfig">
+
+
+    <div class="row featurette">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6" id="mappaIta">
+        <div class="col-xs-8" id="choropleth"> </div>
+        <div id="legendMap" class="col-md-4 col-xs-4 col-sm-4 col-lg-4"></div>
+        <div id="instructions" class="col-md-4"></div>
+        <!-- a legend for the map -->
+        <div id="mapDescription" class="col-md-4"> map description </div>
+      </div>
+      <!-- buttons to switch variables -->
+      <div class="col-lg-3"></div>
+
+    </div>
+
+    <!--hr class="featurette-divider"-->
+
+
+
+    <div class="row featurette">
+      <div class="col-lg-3"> </div>
+      <div class="col-lg-6">
+        <h2 class="featurette-heading"> Analisi e progettazione software - la professione digitale più cercata</h2>
+        <p>Quali sono i lavori considerati? La gerarchia di figure professionali è quella offerta da Istat, le 9 categorie fondamentali
+          possono essere osservate a sotto. Attraverso il grafico è possibile esplorare la frammentazione delle categorie
+          su 5 livelli. Tra questi, il livello di dettaglio più specifico rappresenta le figure lavorative considerate nella
+          ricerca. </p>
+        <p>
+          Gli annunci su cui sono state effettuate le analisi sono quelli compatibili con questa gerarchia, nonostante le sue limitazioni.
+          Come già evidenziato dall’Osservatorio delle Competenze Digitali e da Assolombarda, infatti, le figure emergenti
+          nel campo digitale sono molte e, di queste, solo alcune trovano già spazio nella classificazione Istat. (inserire
+          qualche esempio di queste figure)
+        </p>
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
+
+
+    <div class="row featurette">
+      <div class="col-lg-1">
+      </div>
+      <div class="col-lg-10">
+        <div class="visual" id="treemap"> </div>
+      </div>
+      <div class="col-lg-1">
+      </div>
+    </div>
+
+    <div class="row featurette">
+      <div class="col-lg-1">
+      </div>
+      <div class="col-lg-10">
+        <div class="caption">
+          <caption>La dimensione e la tonalità rappresentano il numero di lavori sul totale visualizzato</caption>
+        </div>
+      </div>
+      <div class="col-lg-1">
+      </div>
+    </div>
+
+
+    <!--hr class="featurette-divider"-->
+
+    <div class="row featurette">
+      <div class="col-lg-3"> </div>
+      <div class="col-lg-6">
+        <h2 class="featurette-heading">Pacchetto Office il più gettonato</h2>
+        <p class="lead">E quali competenze? In questa ricerca ci siamo affidati a WikiData, la struttura di riferimento della più conosciuta
+          enciclopedia digitale Wikipedia che ne raccoglie e categorizza le voci rendendole disponibili online sotto forma
+          di open data. Da qui sono stati estratti 11mila tra linguaggi di programmazione, ambienti di sviluppo e software
+          applicativi andando a costruire l’insieme delle competenze ricercate. Nel grafico sottostante si possono osservare
+          le più frequenti tra le oltre 1600 distinte competenze che sono emerse dall’incrocio con le offerte lavorative.
+          </p>
+        <p>
+          I numeri riscontrati confermano quanto già riportato dalla ricerca di Assolombarda ma svelano anche competenze trasversali.
+          Al primo posto, infatti, spicca il Pacchetto Office seguito ad una certa distanza da Sql, Java, JavaScript e AutoCad.
+        </p>
+      </div>
+      <div class="col-lg-3"> </div>
+    </div>
+
+
+
+    <div class="row featurette">
+      <div class="col-lg-3"> </div>
+      <div class="col-lg-6">
+        <div class="visual" id="allSkillsBC"> </div>
+        <div class="col-lg-3"> </div>
+      </div>
+    </div>
+
+    <div class="row featurette">
+      <div class="col-lg-3"> </div>
+      <div class="col-lg-6">
+        <h2 class="featurette-heading">Le competenze più apprezzate sono trasversali</h2>
+        <p>Cosa significano queste classifiche? Principalmente, ne emerge la pervasività delle competenze digitali in un’ampia
+          varietà di lavori tanto che un pacchetto di software ad uso generale (Office) si guadagna la vetta. Ma la presenza
+          di AutoCad (software dedicato alla modellazione tridimensionale usato da ingegneri, architetti e non solo) nei
+          primi 5 posti sottolinea anche la centralità di queste competenze per figure che non sono prettamente informatiche.
+          Non stupisce invece vedere, a questo livello della classifica , un linguaggio per la gestione dei database (Sql),
+          un linguaggio funzionale allo sviluppo di applicazioni back-end nelle aziende ma fondamentale anche nella creazione
+          di applicazioni per smartphone (Java) e di un linguaggio finalizzato all’interazione con gli utenti nelle pagine
+          web (JavaScript). </p>
+        <p>
+          Ciò che si dimostra ancor più interessante è la trasversalità di queste competenze. Se, infatti, alcune di esse potrebbero
+          apparire come legate ad una specifica figura è invece verificabile l’esatto contrario. La maggioranza si dimostra
+          in grado di soddisfare le esigenze di svariate figure professionali permettendo il dialogo tra ruoli diversi intorno
+          ad un unico software o linguaggio di programmazione.
+        </p>
+      </div>
+      <div class="col-lg-3"> </div>
+    </div>
+
+
+
+
+    <div class="row featurette">
+      <div class="col-lg-3"> </div>
+      <div class="col-lg-6">
+        <div class="visual" id="sankey_all"> </div>
+        <button id="but" onclick="updateData()">Top 10</button>
+        <button id="butAll" onclick="updateDataAll()">Altre</button></div>
+      <div class="col-lg-3"> </div>
+
+    </div>
+
+
+    <div class="row featurette" id="conclusione">
+      <div class="col-lg-3"> </div>
+      <div class="col-lg-6">
+        <div class="paragrafo">
+          <h1>Le competenze oggi</h1>
+        </div>
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
+
+
+    <div class="row featurette">
+      <div class="col-lg-3"> </div>
+      <div class="col-lg-6">
+        <h2 class="featurette-heading"></h2>
+        <p>Quale direzione per il presente ed il futuro? Osserviamo la formazione di una rete di figure professionali in grado
+          di aprire un dialogo su linguaggi comuni e, così, collegate nel lavoro e nel digitale. </p>
+        <p>
+          Così come la tecnologia si rende protagonista un po’ alla volta in ogni ambito della nostra esperienza quotidiana, anche
+          il nostro lavoro si digitalizza di conseguenza. Giacomo Magnabosco - coordinatore nazionale degli iscritti under
+          40 di Ala Assoarchitetti - racconta il ruolo fondamentale di applicativi specifici “in quasi tutti i campi, da
+          quello tecnico a quello compositivo, ma anche nella gestione parametrica di forme e strutture oltre che per effettuare
+          verifiche energetiche”. Ma la spinta alla digitalizzazione arriva anche dal livello istituzionale. Infatti, “la
+          varietà delle pratiche amministrative e tecniche richieste dalle varie normative, non solo italiane, spingono la
+          professione verso software che possano rispondere in modo veloce, reversibile e qualitativamente ottimale alle
+          richieste”. </p>
+        <p>
+          In conclusione, dotarsi di competenze tecniche specifiche assume valore nella “capacità di essere spendibili sul mercato
+          sia come freelance che come dipendente. È indiscutibile anche che molte nuove tecnologie, associate ai calcolatori,
+          permettano di esplorare questioni sia progettuali che normative le quali, se affrontate con tecniche tradizionali,
+          sottrarrebbero molto tempo all'attività”. </p>
+        <p>
+          La corsa alle competenze è dunque aperta.
+        </p>
+      </div>
+
+      <div class="col-lg-3"> </div>
+    </div>
+
+
+    <div class="row featurette">
+      <div class="col-lg-3"> </div>
+      <div class="col-lg-6" id="forcegraph">
+      </div>
+      <div class="col-lg-3"> </div>
+    </div>
+
+
+    <div class="row featurette" id="lav-comp">
+      <div class="col-lg-12 paragrafo">
+        <h1>Competenze e professioni digitiali</h1>
+      </div>
+    </div>
+
+    <div class="row featurette">
+      <div class="col-lg-6">
+        <caption>Quale lavoro ti interessa? Le 10 competenze che ti servono</caption>
+      </div>
+      <div class="col-lg-6">
+        <caption>Quale competenza hai? I 10 lavori che la richiedono</caption>
+      </div>
+    </div>
+
+    <!--hr class="featurette-divider"-->
+
+    <div class="row featurette">
+      <div id="div7">
+        <div class="col-md-6">
+          <select id="indsfig">
 		<option value="Analisti e progettisti di software" selected="selected">Analisti e progettisti di software</option>
 		<option value="Tecnici programmatori">Tecnici programmatori</option>
         <option value="Ingegneri meccanici">Ingegneri meccanici</option>
@@ -309,10 +415,10 @@
 
 </select>
 
-			<div id='hierbcfigure'></div>
-  </div>
-    <div class="col-md-6">
-              <div id="list">
+          <div id='hierbcfigure'></div>
+        </div>
+        <div class="col-md-6">
+          <div id="list">
             <select id="inds">
 		<option value="Pacchetto Office" selected="selected">Pacchetto Office</option>
 		<option value="Java">Java</option>
@@ -326,17 +432,23 @@
         <option value="PHP">PHP</option>
 
 </select>
-</div>
+          </div>
 
-			<div id='hierbcskill'></div>
-	</div>
-  </div>
+          <div id='hierbcskill'></div>
+        </div>
+      </div>
     </div>
+<<<<<<< HEAD
   </div> <!--chiude container struttura-->
+=======
+  </div>
+  <!--chiude container struttura-->
+>>>>>>> 9d8ef18836d7b3073abe412d28ed931bc36b5ff0
 
 
 
 
+<<<<<<< HEAD
 <!-- /END THE FEATURETTES -->
 <section id="fotoDTV">
         <div class="container">
@@ -377,64 +489,109 @@
 
 
             </div>
+=======
+  <!-- /END THE FEATURETTES -->
+  <section id="fotoDTV">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-4" style="text-align: center">
+          <div class="hover1 img-overlay">
+            <a href="https://www.linkedin.com/in/giulia-de-poli-6aa75346/" rel="bookmark">
+              <img src="assets/images/Tavola disegno 2@3x.png" alt="Giulia De Poli"> </a>
+            <hr class="light">
+            <h2>Giulia De Poli</h2>
+            <p>....</p>
+            <p>D</p>
+          </div>
+>>>>>>> 9d8ef18836d7b3073abe412d28ed931bc36b5ff0
         </div>
-</section>
+        <!-- /.col-md-4 -->
+
+        <div class="col-md-4" style="text-align: center">
+          <div class="hover1 img-overlay">
+            <a href="https://www.linkedin.com/in/massimo-tosato-9b5447115/" rel="bookmark">
+              <img src="assets/images/Tavola disegno 3@3x.png" alt="Massimo Tosato"> </a>
+            <hr class="light">
+            <h2>Massimo Tosato</h2>
+            <p>....</p>
+            <p>T</p>
+          </div>
+        </div>
+        <!-- /.col-md-4 -->
+
+        <div class="col-md-4" style="text-align: center">
+          <div class="hover1 img-overlay">
+            <a href="https://www.linkedin.com/in/vincenzo-verzino-11b2793a/" rel="bookmark">
+              <img src="assets/images/Tavola disegno 1@3x.png" alt="Vincenzo Verzino"> </a>
+            <hr class="light">
+            <h2>Vincenzo Verzino</h2>
+            <p>....</p>
+            <p>V</p>
+          </div>
+        </div>
+        <!-- /.col-md-4 -->
+
+
+      </div>
+    </div>
+  </section>
 
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script>
+  <script>
+                                     $(function () {
 
-$(function(){
+                                       $(document).on('scroll', function () {
 
-	$(document).on( 'scroll', function(){
+                                         if ($(window).scrollTop() > 100) {
+                                           $('.scroll-top-wrapper').addClass('show');
+                                         } else {
+                                           $('.scroll-top-wrapper').removeClass('show');
+                                         }
+                                       });
+                                     });
 
-		if ($(window).scrollTop() > 100) {
-			$('.scroll-top-wrapper').addClass('show');
-		} else {
-			$('.scroll-top-wrapper').removeClass('show');
-		}
-	});
-});
-</script>
+  </script>
 
-<script>
+  <script>
+    $(function () {
 
-$(function(){
+      $(document).on('scroll', function () {
 
-	$(document).on( 'scroll', function(){
+        if ($(window).scrollTop() > 100) {
+          $('.scroll-top-wrapper').addClass('show');
+        } else {
+          $('.scroll-top-wrapper').removeClass('show');
+        }
+      });
 
-		if ($(window).scrollTop() > 100) {
-			$('.scroll-top-wrapper').addClass('show');
-		} else {
-			$('.scroll-top-wrapper').removeClass('show');
-		}
-	});
+      $('.scroll-top-wrapper').on('click', scrollToTop);
+    });
 
-	$('.scroll-top-wrapper').on('click', scrollToTop);
-});
+    function scrollToTop() {
+      verticalOffset = typeof (verticalOffset) != 'undefined' ? verticalOffset : 0;
+      element = $('body');
+      offset = element.offset();
+      offsetTop = offset.top;
+      $('html, body').animate({ scrollTop: offsetTop }, 500, 'linear');
+    }
 
-function scrollToTop() {
-	verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
-	element = $('body');
-	offset = element.offset();
-	offsetTop = offset.top;
-	$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
-}
-</script>
-  <script src="assets/js/forcegraph.js"></script> 
- 
+  </script>
+  <script src="assets/js/forcegraph.js"></script>
+
   <script src="assets/js/freq_skills_bc.js"></script>
   <script src="assets/js/bc_vert_skill.js"></script>
   <script src="assets/js/bc_vert.js"></script>
-   <script src="assets/js/treemap.js"></script> 
-  <script src="assets/js/bootstrap.min.js"></script> 
+  <script src="assets/js/treemap.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="assets/js/sankey.js"></script>
   <script type="text/javascript" src="assets/js/choropleth.js"></script>
-  <script src="assets/js/functions_extra.js"></script> 
+  <script src="assets/js/functions_extra.js"></script>
 
 
-  </body>
+</body>
 
-  </html>
+</html>
