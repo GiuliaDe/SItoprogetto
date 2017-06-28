@@ -12,7 +12,7 @@ var g = svgSan.append("g").
         attr("class","gsan");
 
 var formatNumber = d3.format(",.0f"),
-    format = function(d) { return formatNumber(d) + " TWh"; },
+    format = function(d) { return formatNumber(d); },
     color = d3.scale.category10();
 
 var sankey = d3.sankey()
@@ -79,7 +79,7 @@ console.log(energy)
       .attr("y", function(d) { return d.y0; })
       .attr("height", function(d) { return d.y1 - d.y0; })
       .attr("width", function(d) { return d.x1 - d.x0; })
-      .attr("fill", function(d) { return color(d.name.replace(/ .*/, "")); })
+      .attr("fill", "#121621")
       .attr("stroke", "#000");
 
   node.append("text")
@@ -159,7 +159,7 @@ console.log(energy)
       .attr("y", function(d) { return d.y0; })
       .attr("height", function(d) { return d.y1 - d.y0; })
       .attr("width", function(d) { return d.x1 - d.x0; })
-      .attr("fill", function(d) { return color(d.name.replace(/ .*/, "")); })
+      .attr("fill", "#121621")
       .attr("stroke", "#000");
 
   node.append("text")
