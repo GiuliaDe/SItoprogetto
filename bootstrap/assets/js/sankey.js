@@ -82,7 +82,7 @@ console.log(energy)
       .attr("y", function(d) { return d.y0; })
       .attr("height", function(d) { return d.y1 - d.y0; })
       .attr("width", function(d) { return d.x1 - d.x0; })
-      .attr("fill", "#121621")
+      .attr("fill", "#9e9e9e")
       .attr("stroke", "#000");
 
   node.append("text")
@@ -162,7 +162,7 @@ console.log(energy)
       .attr("y", function(d) { return d.y0; })
       .attr("height", function(d) { return d.y1 - d.y0; })
       .attr("width", function(d) { return d.x1 - d.x0; })
-      .attr("fill", "#121621")
+      .attr("fill", "#9e9e9e")
       .attr("stroke", "#000");
 
   node.append("text")
