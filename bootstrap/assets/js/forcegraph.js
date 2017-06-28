@@ -1,7 +1,7 @@
 
     //Constants for the SVG
     var widthFG = 700,
-        heightFG = 350;
+        heightFG = 380;
 
     //Set up the colour scale
     

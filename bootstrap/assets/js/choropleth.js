@@ -207,7 +207,7 @@ function updateMapColors(colorScale, valSel) {
     console.log("update colors", valSel);
     svg.selectAll("path.provincia")
         .transition()
-        .duration(1500)
+        .duration(750)
         .attr("fill", valSel)
         //added function to handler!!!
 
