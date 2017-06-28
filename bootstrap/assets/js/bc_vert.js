@@ -126,7 +126,7 @@ function updatehbcFigura(data){
 }//end update
 
 //set up chart
-var margin = {top: 80, right: 20, bottom: 35, left: 80};
+var margin = {top: 80, right: 20, bottom: 35, left: 100};
 var widthBCf = 600;
 var heightBCf = 400;
 

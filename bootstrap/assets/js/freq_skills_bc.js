@@ -1,7 +1,7 @@
 data = [{"x": "Pacchetto Office", "y": "7386"}, {"x": "SQL", "y": "3761"}, {"x": "Java", "y": "3658"}, {"x": "JavaScript", "y": "2939"}, {"x": "AutoCAD", "y": "2267"}, {"x": "Oracle", "y": "1978"}, {"x": "HTML", "y": "1862"}, {"x": "C#", "y": "1775"}, {"x": "CSS", "y": "1631"}, {"x": "PHP", "y": "1520"}, {"x": "Linux", "y": "1477"}, {"x": "jQuery", "y": "1401"}, {"x": "HTML5", "y": "1176"}, {"x": "MySQL", "y": "1106"}, {"x": "Spring", "y": "1010"}, {"x": "social network", "y": "988"}, {"x": "SolidWorks", "y": "908"}, {"x": "Android", "y": "887"}, {"x": "Android O", "y": "887"}, {"x": "C++", "y": "821"}, {"x": "Microsoft Office", "y": "783"}, {"x": "ASP.NET", "y": "770"}, {"x": "Hibernate", "y": "683"}, {"x": "XML", "y": "674"}, {"x": "Calibre", "y": "652"}, {"x": "Bootstrap", "y": "643"}, {"x": "WordPress", "y": "605"}, {"x": "iOS", "y": "599"}, {"x": "AngularJS", "y": "596"}, {"x": "Angular", "y": "581"}, {"x": "PL/SQL", "y": "550"}, {"x": "Python", "y": "490"}, {"x": "Git", "y": "486"}, {"x": "JBoss", "y": "450"}, {"x": "Simula", "y": "418"}, {"x": "IBM i", "y": "413"}, {"x": "R", "y": "401"}, {"x": "Scala", "y": "398"}, {"x": "Objective C", "y": "392"}, {"x": "Unix", "y": "390"}, {"x": "SAS", "y": "384"}, {"x": "Windows Server", "y": "364"}, {"x": "Eclipse", "y": "322"}, {"x": "Pure", "y": "304"}, {"x": "Content mngt", "y": "267"}, {"x": "Visual Basic", "y": "253"}, {"x": "Script", "y": "252"}, {"x": "Onyx", "y": "247"}, {"x": "Mg", "y": "246"}]
 
 var div = d3.select("#allSkillsBC")
-        .append("svg")
+        .append("div")
         .attr("class", "toolTipBC");
 
     var axisMargin = 20,
@@ -73,8 +73,8 @@ var div = d3.select("#allSkillsBC")
 
     bar
             .on("mousemove", function(d){
-                div.style("left", d3.event.pageX+10+"px");
-                div.style("top", d3.event.pageY-25+"px");
+                div.style("left", d3.event.offsetX+10+"px");
+                div.style("top", d3.event.offsetY-25+"px");
                 div.style("display", "inline-block");
                 div.html((d.x)+"<br>"+(d.y));
             });
