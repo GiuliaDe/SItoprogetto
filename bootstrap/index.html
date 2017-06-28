@@ -493,45 +493,8 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script>
-                                     $(function () {
-
-                                       $(document).on('scroll', function () {
-
-                                         if ($(window).scrollTop() > 100) {
-                                           $('.scroll-top-wrapper').addClass('show');
-                                         } else {
-                                           $('.scroll-top-wrapper').removeClass('show');
-                                         }
-                                       });
-                                     });
-
-  </script>
-
-  <script>
-    $(function () {
-
-      $(document).on('scroll', function () {
-
-        if ($(window).scrollTop() > 100) {
-          $('.scroll-top-wrapper').addClass('show');
-        } else {
-          $('.scroll-top-wrapper').removeClass('show');
-        }
-      });
-
-      $('.scroll-top-wrapper').on('click', scrollToTop);
-    });
-
-    function scrollToTop() {
-      verticalOffset = typeof (verticalOffset) != 'undefined' ? verticalOffset : 0;
-      element = $('body');
-      offset = element.offset();
-      offsetTop = offset.top;
-      $('html, body').animate({ scrollTop: offsetTop }, 500, 'linear');
-    }
-
-  </script>
+  
+  <script src="assets/js/menu.js"></script>
   <script src="assets/js/forcegraph.js"></script>
 
   <script src="assets/js/freq_skills_bc.js"></script>
