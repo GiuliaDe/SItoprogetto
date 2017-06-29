@@ -239,14 +239,13 @@ height: 220px;
 
 
 #fotoDTV{
-    background-color: #e9e9e9;
+    background-color: #efe8e7;
   background-size:cover;
   /*border: solid;
   display: block;*/
 }
 
 #fotoDTV .container {
-
   margin-top: 30px;
 }
 
@@ -274,4 +273,12 @@ margin-top: 100px;
 hr.light {
   color: black;
   background-color: black;
+}
+
+.row.featurette.sel {
+  background-color: #e7e1e1;
+}
+
+.row.featurette.sel:last-child {
+  margin-bottom: 100px;
 }
