@@ -1,11 +1,14 @@
-var width = 700;
-    height = 500;
+//var widthSan = 700;
+var   heightSan = 500;
+
+var widthSan = parseInt(d3.select('#sankey_all').style('width'),10);
+   // heightSan = parseInt(d3.select('#sankey_all').style('height'),10);
 
 
 var svgSan = d3.select("#sankey_all")
     .append("svg")
-    .attr("width", width)
-    .attr("height", height);
+    .attr("width", widthSan)
+    .attr("height", heightSan);
     //width = +svg.attr("width"),
     //height = +svg.attr("height");
 var g = svgSan.append("g").
@@ -18,7 +21,7 @@ var formatNumber = d3.format(",.0f"),
 var sankey = d3.sankey()
     .nodeWidth(15)
     .nodePadding(10)
-    .extent([[1, 1], [width - 1, height - 6]]);
+    .extent([[1, 1], [widthSan - 1, heightSan - 6]]);
 
 function updateData(){
 
@@ -79,7 +82,7 @@ console.log(energy)
       .attr("y", function(d) { return d.y0; })
       .attr("height", function(d) { return d.y1 - d.y0; })
       .attr("width", function(d) { return d.x1 - d.x0; })
-      .attr("fill", "#121621")
+      .attr("fill", "#9e9e9e")
       .attr("stroke", "#000");
 
   node.append("text")
@@ -88,7 +91,7 @@ console.log(energy)
       .attr("dy", "0.35em")
       .attr("text-anchor", "end")
       .text(function(d) { return d.name; })
-    .filter(function(d) { return d.x0 < width / 2; })
+    .filter(function(d) { return d.x0 < widthSan / 2; })
       .attr("x", function(d) { return d.x1 + 6; })
       .attr("text-anchor", "start");
 
@@ -159,7 +162,7 @@ console.log(energy)
       .attr("y", function(d) { return d.y0; })
       .attr("height", function(d) { return d.y1 - d.y0; })
       .attr("width", function(d) { return d.x1 - d.x0; })
-      .attr("fill", "#121621")
+      .attr("fill", "#9e9e9e")
       .attr("stroke", "#000");
 
   node.append("text")
@@ -168,7 +171,7 @@ console.log(energy)
       .attr("dy", "0.35em")
       .attr("text-anchor", "end")
       .text(function(d) { return d.name; })
-    .filter(function(d) { return d.x0 < width / 2; })
+    .filter(function(d) { return d.x0 < widthSan / 2; })
       .attr("x", function(d) { return d.x1 + 6; })
       .attr("text-anchor", "start");
 

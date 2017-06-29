@@ -24,6 +24,7 @@ div.tooltipMap {
     width: 130px;
 }
 #legendMap {
+    margin-top: 50px;
     font-size: 10px;
 }
 
@@ -35,3 +36,6 @@ div.tooltipMap {
     margin-top : 20px;
 }
 
+.backgroundMap {
+ margin-bottom: 50px;
+}

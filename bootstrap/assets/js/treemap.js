@@ -180,10 +180,12 @@
 			.attr("class","foreignobj")
 			.append("xhtml:div")
 			.attr("dy", ".75em")
-			.html(function(d) { return '' +
+			.html(function(d) { if(d.value > 100){return '' +
 				' <p class="title"> ' +d.name+' : '+ d.istatname + '</p>' +
 				' <p> Numero annunci : ' + d3.round(d.value,2)+ '</p>'
-				;})
+				;}else {return '<p class="title"></p>' ;}
+			}
+				)
 			.attr("class","textdiv"); //textdiv class allows us to style the text easily with CSS
 
 		function transition(d) {

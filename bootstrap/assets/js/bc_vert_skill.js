@@ -57,8 +57,14 @@ function updatehbcSkill(data){
 	//set domain for the x axis
     console.log("update:", data)
 	yChart.domain(data.map(function(d){ 
+		return d.figura;
+		/*
     	console.log("ychart: ",d.figura);
-        return d.figura; }) );
+		t=""+d.figura;
+        return ""+d.figura.substring(0,30); 
+	 
+		*/
+	}));
 	//set domain for y axis
 	xChart.domain( [0, d3.max(data, function(d){
 		//console.log("frea: ",+d.frequenza);
@@ -101,6 +107,9 @@ function updatehbcSkill(data){
 	chart.select('.yAxis')
 		  .call(yAxis)
 		  .selectAll("text")
+		  //.style("text-anchor", "middle")
+		  .append("title")
+		  .text(function(d){ return d;});
 		  
 		  
 	//bottom axis
@@ -108,7 +117,7 @@ function updatehbcSkill(data){
 		//.attr("transform", "translate(0," + height + ")")
 		.call(xAxis)
 		.selectAll("text")
-			.style("text-anchor", "end")
+			.style("text-anchor", "start")
 			.attr("dx", ".8em")
 			.attr("dy", ".15em")
 			/*
@@ -120,8 +129,8 @@ function updatehbcSkill(data){
 }//end update
 
 //set up chart
-var margin = {top: 80, right: 20, bottom: 35, left: 80};
-var widthBC = 600;
+var margin = {top: 80, right: 20, bottom: 35, left: 100};
+var widthBC = 550;
 var heightBC = 400;
 
 var svgS = d3.select("#hierbcskill")
@@ -141,6 +150,10 @@ var yChart = d3.scale.ordinal()
 
 var xAxis = d3.svg.axis().orient("top").scale(xChart);
 var yAxis = d3.svg.axis().orient("left").scale(yChart);
+	yAxis.tickFormat(function(d){
+      return d.substring(0,16);
+    });
+
 
 //set up axes
 //left axis
@@ -175,3 +188,4 @@ chart
 chart
 	.append("text")
 	.attr("transform", "translate(" + (widthBC/4) + "," + ( -30) + ")");
+

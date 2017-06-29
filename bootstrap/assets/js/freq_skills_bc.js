@@ -9,7 +9,7 @@ var div = d3.select("#allSkillsBC")
             yMargin = 4,
             width = parseInt(d3.select('#allSkillsBC').style('width'), 10),
             height = parseInt(d3.select('#allSkillsBC').style('height'), 10),
-            barHeight = (height-axisMargin-margin*2)* 0.4/data.length,
+            barHeight = (height-axisMargin-margin*2)* 0.45/data.length,
             barPadding = (height-axisMargin-margin*2)*0.6/data.length,
             data, bar, svg, scale, xAxis, xWidth = 0;
 
@@ -45,11 +45,11 @@ var div = d3.select("#allSkillsBC")
     scale = d3.scale.linear()
             .domain([0, 7500])
             //.range([0,7500])
-            .range([0, width - margin*2 - xWidth]);
+            .range([0, width - margin - xWidth]);
 
     xAxis = d3.svg.axis()
             .scale(scale)
-            .tickSize(-height + 2*margin + axisMargin)
+            .tickSize(-height + margin + axisMargin)
             .orient("bottom");
 
     bar.append("rect")
@@ -73,8 +73,8 @@ var div = d3.select("#allSkillsBC")
 
     bar
             .on("mousemove", function(d){
-                div.style("left", d3.event.pageX+10+"px");
-                div.style("top", d3.event.pageY-25+"px");
+                div.style("left", d3.event.offsetX+10+"px");
+                div.style("top", d3.event.offsetY-25+"px");
                 div.style("display", "inline-block");
                 div.html((d.x)+"<br>"+(d.y));
             });

@@ -107,6 +107,8 @@ function updatehbcFigura(data){
 	chartF.select('.yAxisF')
 		  .call(yAxisF)
 		  .selectAll("text")
+		  .append("title")
+		  .text(function(d){ return d;});
 		  
 		  
 	//bottom axis
@@ -126,14 +128,15 @@ function updatehbcFigura(data){
 }//end update
 
 //set up chart
-var margin = {top: 80, right: 20, bottom: 35, left: 80};
-var widthBCf = 600;
+var margin = {top: 80, right: 20, bottom: 35, left: 100};
+var widthBCf = 550;
 var heightBCf = 400;
 
 var svgF = d3.select("#hierbcfigure")
 				.append("svg")
 				.attr("width", widthBCf + margin.left + margin.right)
 				.attr("height", heightBCf + margin.top + margin.bottom)
+				.attr("class","toolTipDropBC")
 				
 var chartF = svgF.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -181,6 +184,7 @@ chartF
 chartF
 	.append("text")
 	.attr("transform", "translate(" + (widthBCf/4) + "," + ( -30) + ")");
+
 
 //use bothData to begin with
 //update(data);
