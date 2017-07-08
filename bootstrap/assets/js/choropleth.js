@@ -45,9 +45,13 @@ var digitalJobsColor = d3.scale.quantile()
 // color scale Artwork Place orange
 var allJobsColor = d3.scale.quantile()
     .range(colorbrewer.Greens[9]);
+var percentDigColor = d3.scale.quantile()
+    .range(colorbrewer.Oranges[9]);
+
 
 digital_count = {}
 all_count = {}
+percent_count = {}
 
 
 
@@ -61,6 +65,7 @@ var tooltip = d3.select("body").append("div")
 var dsv = d3.dsv(",", "text/plain");
 var all_prov = {}
 var digi_prov = {}
+var perCent_prov = {}
 
 d3.queue()
     .defer(d3.json, "assets/data/regioni_province_4326.geojson")
@@ -86,6 +91,19 @@ d3.queue()
         attributesHandler["digitalJobs"].valueSelector = digi_prov[d.provincia];
         console.log("dp",dp);
         console.log("dig jobs: ",attributesHandler["digitalJobs"].valueSelector);
+
+    })
+    .defer(dsv, "assets/data/Percent_dig_perProv.csv", function(d) {
+        // filter only useful attributes:
+        // ANNO_ARTWORK, ARTWORK_PLACE, ARTWORK_PLACE_LAT, ARTWORK_PLACE_LON, MUSEUM
+        // TECHNIQUE, TYPE, SCHOOL
+        //console.log("job dig");
+        var pp = perCent_prov[d.provincia] || (perCent_prov[d.provincia] = +d.percent_dig);
+        // return the modified row
+        return pp;
+        attributesHandler["percentDig"].valueSelector = perCent_prov[d.provincia];
+        console.log("pp",pp);
+        console.log("percent dig: ",attributesHandler["percentDig"].valueSelector);
 
     })
     .await(callback);
@@ -116,6 +134,17 @@ var attributesHandler = {
         },
         title: "All Jobs",
         description: "Numero di offerte lavorative per provincia"
+    },
+    "percentDig": {
+        value: "percentDig",
+        label: "% digitale",
+        count: perCent_prov,
+        colorScale: percentDigColor,
+        valueSelector: function(d) {
+            return percentDigColor(perCent_prov[d.properties.SIGLA] || 0); // se indefinito assegna ZERO
+        },
+        title: "Digital Percentage",
+        description: "Percentuale di offerte digitali sul totale per provincia"
     }
 };
 
@@ -148,7 +177,7 @@ function callback(error, mappa, all, digital) {
     digitalJobsColor.domain(d3.values(digi_prov));
     // set domain for allJobsColor;
     allJobsColor.domain(d3.values(all_prov));
-
+    percentDigColor.domain(d3.values(perCent_prov));
     // functions must be called into callback to use data!!!
     changeMap('allJobs');
     setTooltip('allJobs');
