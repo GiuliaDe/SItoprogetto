@@ -103,6 +103,18 @@ function updatehbcFigura(data){
 		;
 		
 	//left axis
+
+	bars
+            .on("mousemove", function(d){
+                divFBC.style("left", d3.event.offsetX+10+"px");
+                divFBC.style("top", d3.event.offsetY-25+"px");
+                divFBC.style("display", "inline-block");
+                divFBC.html((d.skill)+"<br>"+(d.frequenza));
+            });
+    bars
+            .on("mouseout", function(d){
+                divFBC.style("display", "none");
+            });
 	
 	chartF.select('.yAxisF')
 		  .call(yAxisF)
@@ -131,6 +143,10 @@ function updatehbcFigura(data){
 var margin = {top: 80, right: 20, bottom: 35, left: 100};
 var widthBCf = 550;
 var heightBCf = 400;
+
+var divFBC = d3.select("#hierbcfigure")
+	.append("div")
+	.attr("class","toolTipFigureBC");
 
 var svgF = d3.select("#hierbcfigure")
 				.append("svg")

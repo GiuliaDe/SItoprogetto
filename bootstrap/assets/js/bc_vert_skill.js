@@ -95,7 +95,7 @@ function updatehbcSkill(data){
 		//.attr("width", function(d){console.log("valore", xChart(d.frequenza)) 
 		//	return height - xChart(d.frequenza); })
 		.attr("height", barHeight - 10)
-		.attr("fill", "#ABCDEF")
+		//.attr("fill", "red")
 		.attr("width",0)
 		.transition()
 		.duration(1000)
@@ -103,6 +103,19 @@ function updatehbcSkill(data){
 			//console.log("width: ",d.frequenza, xChart(d.frequenza))
 			return xChart(d.frequenza); });
 	//left axis
+
+
+	bars
+            .on("mousemove", function(d){
+                divSBC.style("left", d3.event.offsetX+10+"px");
+                divSBC.style("top", d3.event.offsetY-25+"px");
+                divSBC.style("display", "inline-block");
+                divSBC.html((d.figura)+"<br>"+(d.frequenza));
+            });
+    bars
+            .on("mouseout", function(d){
+                divSBC.style("display", "none");
+            });
 	
 	chart.select('.yAxis')
 		  .call(yAxis)
@@ -132,6 +145,10 @@ function updatehbcSkill(data){
 var margin = {top: 80, right: 20, bottom: 35, left: 100};
 var widthBC = 550;
 var heightBC = 400;
+
+var divSBC = d3.select("#hierbcskill")
+	.append("div")
+	.attr("class","toolTipSkillBC");
 
 var svgS = d3.select("#hierbcskill")
 				.append("svg")
